@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
 <title><?php $this->Title(); ?></title> 
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
 <style type="text/css" media="all">@import url( "graphics/style.css" );</style>
+
 </head><body>
 
 <style>
@@ -25,7 +27,6 @@ a.cms-link:hover		{ color: #0f0; }
 a.preorder,
 a.preorder:visited	{ color: #0F0; font-weight: bold; }
 </style>
-
 <div id="demo-notice">
 Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and explore all the features and modules currently available .
 <br>
@@ -36,8 +37,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 <br>Project creator and leader <a class="preorder">ntemos</a>
 </div>
 
-	
-	<div id="ns-global-wrapper">
+<div id="ns-global-wrapper">
 
 
 		<div id="ns-top-bar">

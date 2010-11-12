@@ -36,22 +36,21 @@ session_start();
 if(!$_SESSION['authenticated'] && $_GET['action'] != "home")
 {
 	include("login.php");
-                  new Login();
+                  new login();
 	die;
 }
 switch($_GET['action'])
 {
 default:
 	include("home.php");
-                  new Home();
+                  new home();
 	break;
 case "register":
-	include("register.php");
-                  new Register();
+	include("register.php");  
 	break;
 case "pass_change":
 	include("usercp/pass_change.php");
-                   new Pass_change();
+                   new pass_change();
 	break;
 case "logout":
 	include("logout.php");

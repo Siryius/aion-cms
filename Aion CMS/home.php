@@ -6,7 +6,7 @@ include("lang/eng.php");
 
 //core class
 
-class Home
+class home
 
 {
 

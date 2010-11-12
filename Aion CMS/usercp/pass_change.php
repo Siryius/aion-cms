@@ -7,7 +7,7 @@ include("class/login.class.php");
 
 //core class
 
-class Pass_change
+class pass_change
 
 {
 
