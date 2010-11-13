@@ -2,15 +2,23 @@
 
 include("graphics/header.php");
 require_once("class/login.php");
-require_once("class/captcha.php");
+
+//Verify And Registration Code
+
+if ($_POST['Submit']){
+
+  require_once('recaptchalib.php');
+  $privatekey = "6Lc2s74SAAAAAJeg0lb6O_xiu5X7CE4JhZoOHb0w";
+  $resp = recaptcha_check_answer ($privatekey,
+                                $_SERVER["REMOTE_ADDR"],
+                                $_POST["recaptcha_challenge_field"],
+                                $_POST["recaptcha_response_field"]);
 
 
-	
-
-if(isset($_POST["user_code"]))
+  if (!$resp->is_valid) 
 {
-    if(PhpCaptcha::Validate($_POST['user_code']))
-    {
+$msg = "<font color=red>The reCAPTCHA wasn't entered correctly. Please try again!</font>";
+  } else {
 
 $mysql_server = "localhost"; 
 $mysql_user = "root"; 
@@ -20,41 +28,19 @@ $connection = mysql_connect("$mysql_server","$mysql_user","$mysql_password") or 
 $db = mysql_select_db("$mysql_database") or die ("Unable to select requested database.");	
 					
 $from_user=strip_tags($_POST['ref']);
+
 if ($_POST['Submit']){
 
 // Define post fields into simple variables
 $name = $_POST['name'];
-$email = $_POST['email'];
 $password = $_POST['pass'];
-$sex = $_POST['sex'];
-$data = date('d-m-y');
-$cidade = $_POST['cidade'];
-$estado = $_POST['estado'];
-$nasc = $_POST['nasc'];
-
 $name = stripslashes($name);
 $password = stripslashes($pass);
-$email = stripslashes($email);
-$sex = stripslashes($sex);
-$data = stripslashes($data);
 $ip = stripslashes($ip);
-$cidade = stripslashes($cidade);
-$estado = stripslashes($estado);
-$nasc = stripslashes($nasc);
-
-$quote = stripslashes($quote);
-
 $name = strip_tags($name);
-$email = strip_tags($email);
 $password = strip_tags($pass);
-$sex = strip_tags($sex);
-$data = strip_tags($data);
 $ip = strip_tags($ip);
-$cidade = strip_tags($cidade);
-$estado = strip_tags($estado);
-$nasc = strip_tags($nasc);
 $ip = $_SERVER['REMOTE_ADDR'];
-//$password = mt_rand(11111,99999999);
 
 if(empty($_POST["name"])) { 
  $msg = "<font color=red>Please fill all the gaps!</font>";
@@ -78,12 +64,11 @@ $msg = "<font color=green>Your registration has been completed!</font>";
 
 }
 }
-
-    }else{
-        $msg = "<font color=red>You have entered wrong captcha code!</font>";
-    }
+}  
 }
 ?>
+
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>        <!-- Wrapping the Recaptcha create method in a javascript function -->       <script type="text/javascript">          function showRecaptcha(element) {            Recaptcha.create("6Lc2s74SAAAAAKWm22vGk_RGryNo-vvsZ2V_92On", element, {              theme: "blackglass",              callback: Recaptcha.focus_response_field});          }       </script> 
 
 <div id="ns-top-bar">
 			
@@ -119,8 +104,10 @@ $msg = "<font color=green>Your registration has been completed!</font>";
                                                   <p><br> <?php echo $msg;?><br></p>
 	</div>
 
-      <form name="frm_cadastro" id="frm_cadastro" method="post" action="register.php">
-        <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+       <form method="post" action="register.php">
+      
+
+       <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
 				</tbody><tbody class="ns-standard-setting" style="">
 
 
@@ -161,20 +148,12 @@ $msg = "<font color=green>Your registration has been completed!</font>";
 				<td class="ns-label-cell">
 						<label>Captcha Code:</label><br>
 						<span></td>
+				</td>
 				<td class="ns-input-cell">
-						<img src="captcha.php" width="200" height="60" alt="" style="border: 1px solid #000000; padding: 2px;" /> 
+						<div id="recaptcha_div"></div>        <input type="button" value="Show reCAPTCHA" onclick="showRecaptcha('recaptcha_div');"></input> 
 				</td>
 			</tr> 
 
-<tr class="ns-field-row ns-setting-row-odd">
-				<td class="ns-label-cell">
-						<label>Verify captcha code:</label><br>
-						<span>Enter here the letters you see in the picture above
-				</td>
-				<td class="ns-input-cell">
-						<input name="user_code" id="user_code" type="text" class="inputs" style="width:80px;" maxlength="5" /> 
-				</td>
-			</tr> 
 
 
         <tr><td align="center" colspan="2"><br/><input class="text" type="submit" name="Submit" value="Register" /></td></tr>
