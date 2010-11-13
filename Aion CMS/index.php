@@ -48,10 +48,17 @@ default:
 case "register":
 	include("register.php");  
 	break;
+
 case "pass_change":
 	include("usercp/pass_change.php");
                    new pass_change();
 	break;
+
+case "vote_redeem":
+	include("usercp/vote_redeem.php");
+                   new vote_redeem();
+	break;
+
 case "logout":
 	include("logout.php");
 	break;

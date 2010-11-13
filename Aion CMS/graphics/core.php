@@ -103,7 +103,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 <div class="ns-group-link">
 	
-	<a href="?action=vote" onclick="">
+	<a href="?action=vote_redeem" onclick="">
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Vote & Redeem
 	</a>
 </div>

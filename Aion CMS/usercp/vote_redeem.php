@@ -6,7 +6,7 @@ require_once("class/login.php");
 
 //core class
 
-class pass_change
+class vote_redeem
 
 { 
 
@@ -24,14 +24,6 @@ class pass_change
 	function Content()
 	{
 		
-
-if($_SESSION["access_level"] == "")
-{
-	echo "<script>location.href='index.php'</script>";
-	exit;
-}
-
-
 if ($_POST['Submit']){
 
 
@@ -68,8 +60,8 @@ if(count($_POST) > 2)
 
 <a name="summary_debug_and_logs"></a>
                      <div class="ns-setting-group-info">
-		<img alt="information" src="graphics/img/icon_information.gif"><h2>Change your password</h2>
-		<p><br>Change your current password to another one..<br></p>
+		<img alt="information" src="graphics/img/icon_information.gif"><h2>Vote&Redeem</h2>
+		<p><br>Here you can vote for our server , collect reward_points and redeem them for cool prizes!<br></p>
                                     <p><br><?php echo $msg; ?><br></p>
 	</div>
 
@@ -79,22 +71,20 @@ if(count($_POST) > 2)
 				</tbody><tbody class="ns-standard-setting" style="">
 			<tr class="ns-field-row ns-setting-row-odd">
 				<td class="ns-label-cell">
-						<label>Current password:</label><br>
-						<span>Put here the password you use to enter CMS.</span>
+						<label>Your Reward Points</label><br>
+						<span>Reward points you have collected so far by voting</span>
 				</td>
-				<td class="ns-input-cell">
-						<input class="ns_text_input" id="old_password" maxlength="255" size="45" value="" name="old_password" type="password">
-				</td>
+				<td class="ns-input-cell"><?php echo  $_SESSION['points'];?> </td>
 			</tr>
                                                                    
                                                                      </tbody><tbody class="ns-standard-setting" style="">
 
 			<tr class="ns-field-row ns-setting-row-even">
 				<td class="ns-label-cell">
-						<label>New password:</label><br>
-						<span>Write here the new password.</span>
+						<label>Vote Links:</label><br>
+						<span>Choode a vote page and click to proceed to voting</span>
 				</td>
-				<td class="ns-input-cell">
+				<td class="ns-input-cell"><?php include("class/vote.php"); ?>
 						<input class="ns_text_input" id="password" maxlength="255" size="45" value="" name="password" type="password">
 				</td>
 			</tr>        
