@@ -20,7 +20,7 @@ if ($_POST['Submit']){
 
   if (!$resp->is_valid) 
 {
-$msg = "<font color=red><?php echo $local[214];?></font>";
+$msg = "<font color=red>$local[214]</font>";
   } else {
 
 if ($_POST['Submit']){
@@ -30,11 +30,11 @@ $login = $_POST['name'];
 $password = $_POST['pass'];
 
 if(empty($_POST["name"])) { 
- $msg = "<font color=red><?php echo $local[215];?></font>";
+ $msg = "<font color=red>.$local[215].</font>";
 }
 
 if(empty($_POST["pass"])) { 
-$msg = "<font color=red><?php echo $local[215];?></font>";
+$msg = "<font color=red>$local[215]</font>";
 }
 
 $conn=@mysql_connect(sql_host,sql_user,sql_pass);
@@ -44,7 +44,7 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 	$r = @mysql_query($query) or die(xml_lang('errquery'));
 	
 	if (@mysql_num_rows($r) > 0) {
-		$msg = '<font color=red><?php echo $local[216];?></font>';
+		$msg = '<font color=red>$local[216]</font>';
 	} else {
 		$conn=@mysql_connect(sql_host,sql_user,sql_pass);
 	$db = @mysql_select_db(Logindb,$conn) or die($msg="error");
@@ -62,7 +62,7 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
           document.getElementById("seconds").innerHTML = --seconds;
         }, 1000
       );
-    </script><meta http-equiv="REFRESH" content="5;url=index.php"><font color=green><?php echo $local[217];?>(<span id="seconds">5</span>)</font>';
+    </script><meta http-equiv="REFRESH" content="5;url=index.php"><font color=green>$local[217](<span id="seconds">5</span>)</font>';
         
 	
 	}

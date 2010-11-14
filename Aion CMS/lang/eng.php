@@ -26,6 +26,7 @@ $local[214] = "The reCAPTCHA wasn't entered correctly. Please try again!!";
 $local[215] = "Please fill all the gaps!";
 $local[216] = "The username you have provided is already taken! Please select another one.";
 $local[217] = "Your registration has successfully been completed, you will be redirected to login page in 5 seconds ! ";
+$local[218] = "Show reCAPTCHA";
 
 //install.php (3)
 

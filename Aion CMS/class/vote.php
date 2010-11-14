@@ -3,19 +3,13 @@
 //vote functions
 		function GetVoteForm1()
 	{
-		define("sql_host","localhost");
-		define("sql_user","aion");
-		define("sql_pass","aion");
-		define("Logindb","aion");
-		define("Gamedb","aiong");
+		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
 		mysql_select_db(Gamedb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-                                  
-		$res = mysql_query("SELECT * FROM votemodules WHERE id='1'")or die(mysql_error());
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='1'");
 		while($Row = mysql_fetch_array($res))
                                      {
-                                     
 			$r = mysql_query("SELECT time FROM votes WHERE module='1' AND ip='{$_SERVER['REMOTE_ADDR']}'");
 			if(!$R = mysql_fetch_array($r))
 				$time = "You can vote now!" ;
@@ -32,13 +26,13 @@
 		?>
 
 				<form action="?action=vote_redeem&vote=link1" target="<?php echo $Row['name']; ?>" method="post">
+
 					<input name="module" type="hidden" value="<?php echo $Row['id']; ?>" />
 					<input name="to" type="hidden" value="<?php echo $Row['url']; ?>" />
 					
 						
 						<td width="20"></td>
-						<td ><img src="<?php echo $Row['image']; ?>"/><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link1"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="submit" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM></td>
-					
+						<td align="top"><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link1"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 					
 				</form>
 			<?php
@@ -77,8 +71,7 @@ function GetVoteForm2()
 					<input name="to" type="hidden" value="<?php echo $Row['url']; ?>" />
 					
 						<td width="20"></td>
-						<td ><img src="<?php echo $Row['image']; ?>"/><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link2"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="submit" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM></td>
-
+						<td ><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link2"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 				</form>
 			<?php
 		}
@@ -116,7 +109,7 @@ function GetVoteForm2()
 					<input name="to" type="hidden" value="<?php echo $Row['url']; ?>" />
 					
 						<td width="20"></td>
-						<td ><img src="<?php echo $Row['image']; ?>"/><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link3"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="submit" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM></td>
+						<td ><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link3"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 					
 				</form>
 			<?php
@@ -155,7 +148,7 @@ function GetVoteForm2()
 					<input name="to" type="hidden" value="<?php echo $Row['url']; ?>" />
 					
 						<td width="20"></td>
-						<td ><img src="<?php echo $Row['image']; ?>"/><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link4"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="submit" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM></td>
+						<td ><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link4"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 					
 						
 					
@@ -196,7 +189,7 @@ function GetVoteForm2()
 					<input name="to" type="hidden" value="<?php echo $Row['url']; ?>" />
 					
 						<td width="20"></td>
-						<td ><img src="<?php echo $Row['image']; ?>"/><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link5"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="submit" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM></td>
+						<td ><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link5"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 					
 				</form>
 			<?php
@@ -235,7 +228,7 @@ function GetVoteForm2()
 					<input name="to" type="hidden" value="<?php echo $Row['url']; ?>" />
 					
 						<td width="20"></td>
-						<td ><img src="<?php echo $Row['image']; ?>"/><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link6"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="submit" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM></td>
+						<td ><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link6"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 					
 				</form>
 			<?php
@@ -275,7 +268,7 @@ function GetVoteForm2()
 					
 						
 						<td width="20"></td>
-						<td ><img src="<?php echo $Row['image']; ?>"/><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link7"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="submit" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM></td>
+						<td ><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link7"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 					
 				</form><table>
 			<?php
@@ -313,7 +306,7 @@ function GetVoteForm2()
 					<input name="module" type="hidden" value="<?php echo $Row['id']; ?>" />
 					<input name="to" type="hidden" value="<?php echo $Row['url']; ?>" />
 						<td width="20"></td>
-						<td ><img src="<?php echo $Row['image']; ?>"/><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link8"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="submit" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM></td>
+						<td ><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link8"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 					
 				</form><table>
 			<?php
@@ -354,7 +347,7 @@ function GetVoteForm2()
 					<input name="to" type="hidden" value="<?php echo $Row['url']; ?>" />
 					
 						<td width="20"></td>
-						<td ><img src="<?php echo $Row['image']; ?>"/><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link9"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="submit" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM></td>
+						<td ><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link9"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 					
 				</form><table>
 			<?php

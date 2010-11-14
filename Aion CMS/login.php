@@ -14,7 +14,7 @@ class login // core class -needed by index.php
                 function Title()   //show the page's title
                 {  
 
-             echo $local[100]; 
+             $local[100]; 
 
                 }
 
@@ -73,7 +73,7 @@ class login // core class -needed by index.php
 				<input name="action" value="login" type="hidden">
 		                                    <table id="ns_login_table" align="center">
 					<tbody><tr>
-						<th><label for="ns_username"><?php echo $local[101]; ?> :</label></th>
+						<th><label for="ns_username"><?php include("lang/eng.php"); echo $local[101]; ?> :</label></th>
 						<td><input name="name" id="name" value="" size="17" type="text"></td>
 						
 					</tr>
