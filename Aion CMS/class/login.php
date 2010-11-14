@@ -1,7 +1,5 @@
 <?php
 
-
-
 class AccountData extends Factory{
 
 

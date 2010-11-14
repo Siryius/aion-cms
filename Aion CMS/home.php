@@ -40,7 +40,7 @@ class home
 			</tr>
 			<tr class="ns-module-summary-row  ns-setting-row-even">
 				<td class="ns-setting-group-cell" align="left">
-				    <a class="ns-module-setting-link" href="?action=vote&redeem" onclick="">
+				    <a class="ns-module-setting-link" href="?action=vote_redeem" onclick="">
 					Vote & Redeem
 					</a><br>
 					Here you can vote for the server , earn vote points and redeem them for special in-game rewards..

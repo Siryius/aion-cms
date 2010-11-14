@@ -2,7 +2,7 @@
 
 //includes
 require_once("class/login.php");
-include("lang/eng.php");
+include("config.php");
 
 
 class login // core class -needed by index.php
@@ -14,7 +14,7 @@ class login // core class -needed by index.php
                 function Title()   //show the page's title
                 {  
 
-             echo $local[1]; 
+             echo $local[100]; 
 
                 }
 
@@ -73,12 +73,12 @@ class login // core class -needed by index.php
 				<input name="action" value="login" type="hidden">
 		                                    <table id="ns_login_table" align="center">
 					<tbody><tr>
-						<th><label for="ns_username"><?php include("lang/eng.php"); echo $local[2]; ?> :</label></th>
+						<th><label for="ns_username"><?php echo $local[101]; ?> :</label></th>
 						<td><input name="name" id="name" value="" size="17" type="text"></td>
 						
 					</tr>
 					<tr>
-						<th><label for="ns_password"><?php include("lang/eng.php"); echo $local[3]; ?> :</label></th>
+						<th><label for="ns_password"><?php include("lang/eng.php"); echo $local[102]; ?> :</label></th>
 						<td><input name="password" id="password" value="" size="17" type="password"></td>
 					</tr>
 					<tr>
@@ -163,6 +163,7 @@ class login // core class -needed by index.php
 
                      function __construct()
 	{
+include("config.php");
 		include("graphics/login.php");
 	}
 }
