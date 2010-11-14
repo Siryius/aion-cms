@@ -14,7 +14,8 @@ class login // core class -needed by index.php
                 function Title()   //show the page's title
                 {  
 
-             $local[100]; 
+             
+$local[100];
 
                 }
 

@@ -2,8 +2,6 @@
 
 // includes
 
-include("lang/eng.php");
-
 include("config.php");
 
 // force login to view.
@@ -28,6 +26,12 @@ case "pass_change":
 	include("usercp/pass_change.php");
                    new pass_change();
 	break;
+
+case "asdf":
+	include("spend/spend1.php");
+                   new Spend();
+	break;
+
 
 case "vote_redeem":
 	include("usercp/vote_redeem.php");

@@ -1,4 +1,8 @@
-<?php $sqlErrorText = '';
+<?php 
+
+include("../lang/eng.php");
+
+$sqlErrorText = '';
 $sqlErrorCode = 0;
 $sqlStmt      = '';
 $sqlFileToExecute = 'loginserver.sql';
@@ -71,7 +75,8 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
                                                   
 <div class="ns-setting-group-info">
 		<img alt="information" src="../graphics/img/icon_information.gif"><h2>Installer</h2>
-		<p><br>Install easily your AION CMS within a few clicks!<br></p>
+		<p><br>Install easily your AION CMS within a few clicks!</p><br>
+                                     
 	</div>
 
       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="dbdata">
@@ -169,7 +174,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
            	     if (!$result)
 
 {
-           	        $sqlErrorCode = mysql_errno();
+           	       $sqlErrorCode = mysql_errno();
            	        $sqlErrorText = mysql_error();
            	        $sqlStmt      = $stmt;
                          break;
@@ -202,7 +207,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
            	     if (!$result1)
 
                                    {
-           	        $sqlErrorCode = mysql_errno();
+           	         $sqlErrorCode = mysql_errno();
            	        $sqlErrorText = mysql_error();
            	        $sqlStmt      = $stmt;
                          break;
@@ -219,28 +224,23 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
       <div id="icon2">&nbsp;</div>
       <div id="result">
         <table width="100%">
+
 <?php
         if ($sqlErrorCode == 0)
 
 {
-           echo ('<div class="ns-setting-group-info">
-		<img alt="information" src="../graphics/img/icon_information.gif"><h2>Success</h2>
-		<p><br>Aion CMS has successfully installed.<br></p>
-	</div>');
+     ?> <div class="ns-setting-group-info">
+		<img alt="information" src="../graphics/img/icon_information.gif"><h2><font color="red">Success</h2></font>
+		<br><p>Aion CMS has successfully been installed!</p>
+             </div><?php
+	
+        } else {	
+                                 ?> <div class="ns-setting-group-info">
+		<img alt="information" src="../graphics/img/icon_information.gif"><h2><font color="red">Error</h2></font>
+		<br><p>Error code: <?php echo $sqlErrorCode; ?></p>
+              <p>Error text: <?php echo $sqlErrorText; ?></p>
+             <p>Statement:<?php echo $sqlStmt;?></p></div><?php
 
-           
-              
-        } else {
-
-           echo ('<div class="ns-setting-group-info">
-		<img alt="information" src="../graphics/img/icon_information.gif"><h2>Error<h2>
-		<p><br> 
-<?php echo "<tr><td>An error occured during installation!</td></tr>";
-           echo "<tr><td>Error code: $sqlErrorCode</td></tr>";
-           echo "<tr><td>Error text: $sqlErrorText</td></tr>";
-           echo "<tr><td>Statement:<br/> $sqlStmt</td></tr>"; ?>
-                                  <br></p>
-	</div>');
         }
 ?>
         </table>

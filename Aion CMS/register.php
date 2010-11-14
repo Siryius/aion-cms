@@ -30,7 +30,7 @@ $login = $_POST['name'];
 $password = $_POST['pass'];
 
 if(empty($_POST["name"])) { 
- $msg = "<font color=red>.$local[215].</font>";
+ $msg = "<font color=red>$local[215]</font>";
 }
 
 if(empty($_POST["pass"])) { 
@@ -62,7 +62,7 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
           document.getElementById("seconds").innerHTML = --seconds;
         }, 1000
       );
-    </script><meta http-equiv="REFRESH" content="5;url=index.php"><font color=green>$local[217](<span id="seconds">5</span>)</font>';
+    </script><meta http-equiv="REFRESH" content="5;url=index.php"><font color=green>$local[217] (<span id="seconds">5</span>)</font>';
         
 	
 	}

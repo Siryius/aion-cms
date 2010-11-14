@@ -85,81 +85,75 @@ class vote_redeem
 				</td>
 				<td class="ns-input-cell">
 								
-  <center> <table border="1" cellpadding="0" cellspacing="0" width="400" height="35">
-	<tbody><tr>
-			<td colspan="3" style="background: url(&quot;images/newpanelbgtop.png&quot;) repeat scroll 0% 0% transparent; font-size: 11px; color: rgb(255, 255, 255,255); font-weight: bold; font-family: Arial,Helvetica,sans-serif;" align="center";>
-
-				<?php GetCategoryTitleFromDatabase(); // TITLE?>
-				
-			</td>
-    </tr></tbody>
-	
-	<table border="1"><tbody>
-    <tr>
-	
-	<tr>
-	<td>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://www.aiondatabase.com/js/exsyndication.js"></script>
 	<form method="post" action="spendpoints/buy_item.php">
-<div>
-  <table width="400" border="1">
+
+  <table width="180" border="0">
+<td>
+ <tr> 
+        <td width="10"><p align=""><em></em></p></td>
+      <td width="40"><p align="center"><em><?php GetCategoryTitleFromDatabase1(); // TITLE?></em></p></td>
+      <td width="60"><p align="center"><em></em></p></td>
+      <td width="70"><p align="center"><em></em></p></td>
+    </tr>
     <tr>
-      <td width="10">&nbsp;</td>
-      <td width="70"><p align="left"><em>Item name</em></p></td>
-      <td width="60"><div align="center"><em>Amount</em></div></td>
-      <td width="40"><div align="center"><em>Cost</em></div></td>
+       <td width="10"><p align="left"><em></em></p></td>
+      <td width="40"><p align="left"><em>Item name</em></p></td>
+      <td width="60"><p align="center"><em>Amount</em></p></td>
+      <td width="70"><p align="center"><em>Cost</em></p></td>
     </tr>
 
- <?php echo GetRewardsFromDatabase(); ?>
+ <?php echo GetRewardsFromDatabase1(); ?>
 
-</table>
-</div>
+
 </form>
-</td>
-</tr>
-</tr>
-</tbody>
-</table>
+
 		   
 
 
 
-<table align="center" border="1" cellpadding="0" cellspacing="0" width="200">
-         <tbody><tr>
-          <td colspan="3" style="background: url(&quot;images/newpanelbgtop.png&quot;) repeat scroll 0% 0% transparent; letter-spacing: 3px; font-size: 11px; color: rgb(255, 255, 255,255); font-weight: bold; font-family: Arial,Helvetica,sans-serif;" align="center" height="35" valign="top" width="559"><h1>Spend your Vote Points!<h1></td>
+      
+       <tr> 
+        <td width="10"><p align=""><em></em></p></td>
+      <td width="40"><p align="center"><em></em></p></td>
+      <td width="60"><p align="center"><em></em></p></td>
+      <td width="70"><p align="center"><em></em></p></td>
+    </tr>
           
-   
-<tr valign="top">
-                                                                                                                               
-								<td>Points:</td>
-								<td><span id="points"><?php echo $_SESSION['points']; ?></span></td>
+<tr valign="center">
+   <td width="10"><p align=""><em></em></p></td>
+								<td width="10">Server:</td>
+								<td><select name="realm" id="realm" size="1" style="width:100px;" onchange="getCharacters(); getRewards();"><option value="0">Your browser is outdated.</option></select></td>
+<td width="70"><p align="center"><em></em></p></td>
   </p>
     <p>
 							</tr>
-							<tr valign="top">
-								<td width="75px">Server:</td>
-								<td><select name="realm" id="realm" size="1" style="width:150px;" onchange="getCharacters(); getRewards();"><option value="0">Your browser is outdated.</option></select></td>
-  </p>
-    <p>
-							</tr>
-							<tr valign="center">
+							<tr valign="center"><td width="10"><p align=""><em></em></p></td>
 								<td>Character:</td>
-								<td><select name="character" id="character" size="1" style="width:150px;"><option value="0">Your browser is outdated.</option></select></td>
+								<td><select name="character" id="character" size="1" style="width:100px;"><option value="0">Your browser is outdated.</option></select></td><td width="70"><p align="center"><em></em></p></td>
   </p>
     <p>
 							</tr>
-							<tr valign="center">
+							<tr valign="center"><td width="10"><p align=""><em></em></p></td>
 								<td>Reward:</td>
-								<td><select name="reward" size="1" id="reward" style="width:150px;" onchange="getInfo();"><option value="0">Your browser is outdated.</option></select></td>
+								<td><select name="reward" size="1" id="reward" style="width:100px;" onchange="getInfo();"><option value="0">Your browser is outdated.</option></select></td><td width="70"><p align="center"><em></em></p></td>
 
 
  </p>
   
     <tr valign="center">
-								<td colspan="2" align="center"><input id="purchase" type="button" value="Purchase" onclick="onPurchase();" /></td>
+
+<td width="10"><p><em></em></p></td>
+<td width="40"><p></p></td>
+<td width="60"><input id="purchase" type="button" value="Purchase" onclick="onPurchase();" /></td>
+
+<td width="70"><p align="center"><em></em></p></td>
 							
 </tr>
+
+</td>
+						
 
 
 						</table>
@@ -178,7 +172,7 @@ class vote_redeem
 				
 				var Realms = <?php echo GetRealmData(); ?>;
 				var Characters = <?php echo GetCharData(); ?>;
-				var Rewards = <?php echo GetRewardData(); ?>;
+				var Rewards = <?php echo GetRewardData1(); ?>;
 				
 				var PointCount = <?php echo $_SESSION['points']; ?>;
 				
@@ -266,7 +260,7 @@ class vote_redeem
 							}
 						}
 					}
-					R.open("POST","?act=spend1",true);
+					R.open("POST","?action=asdf",true);
 					var params = "realm="+Realm.value+"&reward="+Reward.value+"&character="+Character.value;
 					R.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					R.setRequestHeader("Content-length",params.length);
