@@ -6,20 +6,28 @@ include("config.php");
 
 // force login to view.
 session_start();
-if(!$_SESSION['authenticated'] && $_GET['action'] != "home")
+if(!$_SESSION['authenticated'] && $_GET['action'] != "register")
 {
 	include("login.php");
                   new login();
 	die;
 }
+if(!$_SESSION['authenticated'] && $_GET['action'] != "")
+{
+	include("register.php");
+                  new register();
+	die;
+}
 switch($_GET['action'])
 {
 default:
-	include("home.php");
-                  new home();
+	include("usercp.php");
+                  new usercp();
 	break;
-case "register":
-	include("register.php");  
+
+case "admincp":
+	include("admincp.php");
+                   new admincp();
 	break;
 
 case "pass_change":
@@ -42,5 +50,6 @@ case "logout":
 	include("logout.php");
 	break;
 }
+
 
 ?>

@@ -1,10 +1,18 @@
 <?php
 
 //includes
-
-include("graphics/header.php");
-//include("class/salt.php");
+require_once("class/login.php");
 include("config.php");
+
+
+
+class register // core class -needed by index.php
+
+{
+
+                 function Content()       //contains the html code
+                                   {   
+
 
 //Verify And Registration Code
 
@@ -29,13 +37,7 @@ if ($_POST['Submit']){
 $login = $_POST['name'];
 $password = $_POST['pass'];
 
-if(empty($_POST["name"])) { 
- $msg = "<font color=red>$local[215]</font>";
-}
 
-if(empty($_POST["pass"])) { 
-$msg = "<font color=red>$local[215]</font>";
-}
 
 $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 	$db = @mysql_select_db(Logindb,$conn) or die($msg = "error");	
@@ -44,7 +46,7 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 	$r = @mysql_query($query) or die(xml_lang('errquery'));
 	
 	if (@mysql_num_rows($r) > 0) {
-		$msg = '<font color=red>$local[216]</font>';
+		$msg = '<font color=red>Username already taken</font>';
 	} else {
 		$conn=@mysql_connect(sql_host,sql_user,sql_pass);
 	$db = @mysql_select_db(Logindb,$conn) or die($msg="error");
@@ -55,115 +57,177 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 		"INSERT INTO account_data (name,password) 
 				VALUES ('$login','$encode_password')") 
 		or die(xml_lang('errquery'));
-   $msg = '<script>
-      var seconds = 5;
-      setInterval(
-        function(){
-          document.getElementById("seconds").innerHTML = --seconds;
-        }, 1000
-      );
-    </script><meta http-equiv="REFRESH" content="5;url=index.php"><font color=green>$local[217] (<span id="seconds">5</span>)</font>';
+   $msg = "<font color=green>Your registration has beed successfully completed , you will be redirected in login page in 5 seconds!</font>";
         
-	
+	?></script><meta http-equiv="REFRESH" content="5;url=index.php"><?php
 	}
 
 }
 }  
 }
+
 ?>
 
-<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>        <!-- Wrapping the Recaptcha create method in a javascript function -->       <script type="text/javascript">          function showRecaptcha(element) {            Recaptcha.create("6Lc2s74SAAAAAKWm22vGk_RGryNo-vvsZ2V_92On", element, {              theme: "blackglass",              callback: Recaptcha.focus_response_field});          }       </script> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>.:: Aion CMS : Login ::.</title>
+
+ 
+<style type="text/css" media="all">@import url( "graphics/style.css" );</style>
+
+</head><body>
+
+<style>
+#demo-notice	{ background: #4558A4 url(graphics/img/bg-gradient3.gif) repeat-x scroll left top; color: #FFF; 
+					margin: 10px; padding: 10px; border: 1px solid red; text-align: left; font-size: 14px; 
+					border: 1px solid #35447F;
+					-moz-border-radius-bottomleft:10px; -moz-border-radius-bottomright:10px; 
+						-moz-border-radius-topleft:0px; -moz-border-radius-topright:0px;
+				}
+
+#demo-links		{ float: right; }
+#demo-links a,
+#demo-links a:visited	{ color: #fff; font-weight: bold; }
+#demo-links a:hover		{ color: #0f0; }
+
+a.cms-link,
+a.cms-link:visited	{ color: #fff; font-weight: bold; }
+a.cms-link:hover		{ color: #0f0; }
+
+a.preorder,
+a.preorder:visited	{ color: #0F0; font-weight: bold; }
+</style>
+<div id="demo-notice">
+Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and explore all the features and modules currently available .
+<br>
+<br>The project is still under development .
+<br>
+<br>For further information or/and suggestions about Aion CMS visit <a class="cms-link" href="http://www.aion-engine.com/t540/">project's url</a>
+<br>
+<br>Project creator and leader <a class="preorder">ntemos</a>
+</div>
+
+<div id="ns-global-wrapper">
 
 <div id="ns-top-bar">
 			
 		
-<ul>
+			<ul>
 				<li class="">
-					<a href="."><?php echo $local[200];?></a>
-				</li>
-			</ul>			
-<ul>
-				<li class="ns-on">
-					<a href="register.php"><?php echo $local[201];?></a>
+					<a href="?action=login">Login</a>
 				</li>
 			</ul>
-                        
+
+                        <ul>
+				<li class="ns-on">
+					<a href="?action=register">Register</a>
+				</li>
+			</ul>
  
 
 			<br style="clear: both;">
 		</div>
 		
 		<div id="ns-nav-bar">
-			<?php echo $local[202];?>
+			Aion CMS - Register <?php echo $msg;?>
 		</div>
 		
-		<div id="ns-content">
+		<div id="ns-content"><br><br><br><br><br><br>
 
+<script src="graphics/js/SpryValidationTextField.js" type="text/javascript"></script>
+<script src="graphics/js/SpryValidationPassword.js" type="text/javascript"></script>
+<script src="graphics/js/SpryValidationConfirm.js" type="text/javascript"></script>
+<link href="graphics/js/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<link href="graphics/js/SpryValidationPassword.css" rel="stylesheet" type="text/css" />
+<link href="graphics/js/SpryValidationConfirm.css" rel="stylesheet" type="text/css" />
+</head>
+<?php echo $msg;?>
 
-                                      
-                                                  
-<div class="ns-setting-group-info">
-		<img alt="information" src="graphics/img/icon_information.gif"><h2><?php echo $local[203];?></h2>
-		<p><br><?php echo $local[204];?><br></p>
-                                                  <p><br> <?php echo $msg;?><br></p>
-	</div>
-
-       <form method="post" action="register.php">
-      
-
-       <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+<body>
+<form id="form1" name="form1" method="post" action="?action=register">
+   <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
 				</tbody><tbody class="ns-standard-setting" style="">
 
-
-			<tr class="ns-field-row ns-setting-row-odd">
-				<td class="ns-label-cell">
-						<label><?php echo $local[205];?></label><br>
-						<span><?php echo $local[206];?>
+    <tr>
+      <th width="290" scope="col"><table width="600" border="0" align="center">
+        <tr class="ns-field-row ns-setting-row-odd">
+         <td class="ns-label-cell">
+						<label>Username:</label>
+						<span><br>It must be between 5 and 18 letters. 
 				</td>
-				<td class="ns-input-cell">
-						<input name="name" type="text" id="name"  />
-				</td>
-			</tr> 
+          <th width="310" scope="col"><span id="sprytextfield1">
+            <input type="text" name="name" id="name" />
+            <span class="textfieldRequiredMsg"><br />
+            A value is required.</span></span></th>
+        </tr>
+
+      
+           <tr class="ns-field-row ns-setting-row-even">
+         <td class="ns-label-cell">
+        <label>Password:</label>
+          <span><br>It must be between 5 and 18 letters. </td>
+          <td><span id="sprypassword1">
+          <input AUTOCOMPLETE="off" type="password" name="pass" id="pass" />
+          <span class="passwordRequiredMsg"><br />
+A value is required.</span><span class="passwordMinCharsMsg">Minimum number of characters not met.</span><span class="passwordMaxCharsMsg">Exceeded maximum number of characters.</span></span></td>
+        </tr>
 
 
-         <tr class="ns-field-row ns-setting-row-even">
-				<td class="ns-label-cell">
-						<label><?php echo $local[207];?></label><br>
-						<span><?php echo $local[208];?>
-				</td>
-				<td class="ns-input-cell">
-						<input type="password" name="pass" id="pass" />
-				</td>
-			</tr> 
+        <tr class="ns-field-row ns-setting-row-odd">
+          <td class="ns-label-cell">
+	<label>Password Verification:</label>
+	<span><br>Enter your password again.</td>
+          <td><span id="spryconfirm1">
+            <input AUTOCOMPLETE="off" type="password" name="password" id="password" />
+            <span class="confirmRequiredMsg"><br />
+            A value is required.</span><span class="confirmInvalidMsg">The values don't match.</span></span></td>
+        </tr>
 
+
+          <tr class="ns-field-row ns-setting-row-even">
+           <td class="ns-label-cell">
+	<label>Captcha code:</label>
+	<span><br>Write here the letter you see in picture.</td>
+          <td><script type="text/javascript"
+     src="http://www.google.com/recaptcha/api/challenge?k=6Lc2s74SAAAAAKWm22vGk_RGryNo-vvsZ2V_92On">
+  </script>
+  <noscript>
+     <iframe src="http://www.google.com/recaptcha/api/noscript?k=6Lc2s74SAAAAAKWm22vGk_RGryNo-vvsZ2V_92On"
+         height="300" width="500" frameborder="0"></iframe><br>
+     <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+     </textarea>
+     <input type="hidden" name="recaptcha_response_field"
+         value="manual_challenge">
+  </noscript></input> 
+        </tr>
+
+
+    <tr><td></td>
+      <th scope="row" align="left"><input class="text" type="submit" name="Submit" value="Register" /></th>
+    </tr>
+
+
+  </table>
+</form>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none", {validateOn:["blur", "change"], minChars:5, maxChars:18});
+var sprypassword1 = new Spry.Widget.ValidationPassword("sprypassword1", {validateOn:["blur", "change"], minChars:5, maxChars:18});
+var spryconfirm1 = new Spry.Widget.ValidationConfirm("spryconfirm1", "pass", {validateOn:["blur", "change"]});
+</script>
+</body>
+</html><?php
+ 
+}
+                  
    
-         <tr class="ns-field-row ns-setting-row-odd">
-				<td class="ns-label-cell">
-						<label><?php echo $local[209];?></label><br>
-						<span><?php echo $local[210];?>
-				</td>
-				<td class="ns-input-cell">
-						<input name="password" type="password" class="inputs" id="password" style="width:100px;" maxlength="65"/>  
-				</td>
-			</tr> 
 
-
-         <tr class="ns-field-row ns-setting-row-even">
-				<td class="ns-label-cell">
-						<label><?php echo $local[211];?></label><br>
-						<span><?php echo $local[212];?>
-				</td>
-				<td class="ns-input-cell">
-						<div id="recaptcha_div"></div>        <input type="button" value="<?php echo $local[218];?>" onclick="showRecaptcha('recaptcha_div');"></input> 
-				</td>
-			</tr> 
-
-
-
-        <tr><td align="center" colspan="2"><br/><input class="text" type="submit" name="Submit" value="<?php echo $local[213];?>" /></td></tr>
-        </table>  
-      </form>
-
-
-        
-
+            function __construct()
+	                                           {
+		                                  $this->Content();
+	                                           }
+                     
+}
+ 
+?>

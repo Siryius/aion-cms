@@ -1,16 +1,14 @@
 <?php
 
 //includes
-require_once("lang/eng.php");
-require_once("class/login.php");
+include("lang/eng.php");
+
 
 //core class
 
-class pass_change
+class usercp
 
-{ 
-
-
+{
 
 //functions
 
@@ -20,52 +18,11 @@ class pass_change
                 include("lang/eng.php"); echo $local[4];
 
                 }
+ 
+                 function Form() //contain the html code
+                {   
 
-	function Content()
-	{
-		
-
-if($_SESSION["access_level"] == "")
-{
-	echo "<script>location.href='index.php'</script>";
-	exit;
-}
-
-
-if ($_POST['Submit']){
-
-
-
-if(count($_POST) > 2)
-{
-	$msg = "<font color=red>An error occured</font>";
-    
-}
-	$objAccountData = new AccountData();	
-
-	$objAccountData->id = $_SESSION["id"];
-	$objAccountData->password = cryptPassword($_POST["old_password"]);
-
-	if($objAccountData->isPassword())
-	{               
-                                 
-		$objAccountData->password = cryptPassword($_POST["password"]);
-		
-		if($objAccountData->Update())
-		{
-			$msg = "<font color=green>Your password has successfully changed!</font>";
-                                                 
-		} 
-	} else
-                       {
-		$msg = "<font color=red>Please enter correctly your current password.</font>";
-  
-	     }
-}
-
-
-                 ?>
-
+                    ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
 <title><?php $this->Title(); ?></title> 
@@ -214,57 +171,47 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 <div id="ns-settings-group-Main-summary" class="ns-settings-ctr" style="">
 
 <a name="summary_debug_and_logs"></a>
-                     <div class="ns-setting-group-info">
-		<img alt="information" src="graphics/img/icon_information.gif"><h2>Change your password</h2>
-		<p><br>Change your current password to another one..<br></p>
-                                    <p><br><?php echo $msg; ?><br></p>
+<div class="ns-setting-group-info">
+		<img alt="information" src="graphics/img/icon_information.gif"><h2>Aion Content Management System (CMS)</h2>
+		<p><br>Welcome <?php echo $_SESSION['name'];?> ! Here you can enjoy premium services such as management of your account, collecting and redeeming your vote-points etc..<br></p>
 	</div>
 
-<form action="" method="post">
-            	<input name="pass_change" type="hidden" />
-<table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
-				</tbody><tbody class="ns-standard-setting" style="">
-			<tr class="ns-field-row ns-setting-row-odd">
-				<td class="ns-label-cell">
-						<label>Current password:</label><br>
-						<span>Put here the password you use to enter CMS.</span>
-				</td>
-				<td class="ns-input-cell">
-						<input AUTOCOMPLETE="off" class="ns_text_input" id="old_password" maxlength="255" size="45" value="" name="old_password" type="password">
-				</td>
+	<table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody><tr class="ns-module-summary-row  ns-setting-row-odd">
+				<td class="ns-setting-group-cell" align="left">
+				    <a class="ns-module-setting-link" href="?action=pass_change" onclick="">
+					Change your password
+					</a><br>
+					Change your current password to another one..
+				</td>						
 			</tr>
-                                                                   
-                                                                     </tbody><tbody class="ns-standard-setting" style="">
-
-			<tr class="ns-field-row ns-setting-row-even">
-				<td class="ns-label-cell">
-						<label>New password:</label><br>
-						<span>Write here the new password.</span>
-				</td>
-				<td class="ns-input-cell">
-						<input AUTOCOMPLETE="off" class="ns_text_input" id="password" maxlength="255" size="45" value="" name="password" type="password">
-				</td>
-			</tr>        
-
-
-                                        
-		</tbody>
-
-	</table
+			<tr class="ns-module-summary-row  ns-setting-row-even">
+				<td class="ns-setting-group-cell" align="left">
+				    <a class="ns-module-setting-link" href="?action=vote_redeem" onclick="">
+					Vote & Redeem
+					</a><br>
+					Here you can vote for the server , earn vote points and redeem them for special in-game rewards..
+				</td>		      
 	
-	<div style="text-align: right; margin-top: 10px;">
-		<input class="ns-save-button" name="Submit" value="Save" type="submit">
-	</div>
-</body></html>	
+				</tbody></table>
+			</div>
+		</form>
 
-                    <?php
+	
+	</div>
+</body></html>						
+			
+                     <?php  
+                 }    
+
+	function Content() //calls the form function
+	{
+
+                  $this->Form();
+
 	}
 
-                    
- 
-
                      function __construct() //builds the pade by sending its content to the core html 
-
 	{
 		$this->Content();
 	}

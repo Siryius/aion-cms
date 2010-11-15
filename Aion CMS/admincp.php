@@ -1,3 +1,29 @@
+<?php
+
+//includes
+include("lang/eng.php");
+
+
+//core class
+
+class admincp
+
+{
+
+//functions
+
+                function Title()  //show the page's title
+                {  
+
+                include("lang/eng.php"); echo $local[4];
+
+                }
+ 
+                 function Form() //contain the html code
+                {   
+
+
+                    ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
 <title><?php $this->Title(); ?></title> 
@@ -43,27 +69,27 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		<div id="ns-top-bar">
 			<div id="ns_top_right_links">
 				
-				<a href="?action=logout">Log out</a>
+				<a href="?action=logout">Log out (<?php echo $_SESSION['name'];?>)</a>
 			</div>
 		
 			<ul>
-				<li class="ns-on">
+				<li class="">
                     
-					<a href="?action=home">
+					<a href="?action=usercp">
                     <img src="graphics/img/admin_main_settings.gif" border="0">
                     
                     <span>User</span>
                     </a>
 				</li>
-				<li class="">
+				<li class="ns-on">
                     
-					<a href="?action=home">
+					<a href="?action=admincp">
                     <img src="graphics/img/admin_modules.gif" border="0">
                     <span>Admin</span>
                     </a>
 				</li>
 				<li class="">
-					<a href="?action=home">
+					<a href="?action=help">
                     <img src="graphics/img/admin_help.gif" border="0">                
                     <span>Help &amp; Support</span>
                     </a>
@@ -77,7 +103,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			<input name="tab" value="main" type="hidden">
 		
 			<div id="ns-nav-bar">
-				Aion CMS - User Control Panel
+				Aion CMS - Admin Control Panel
 			</div>
 
 			<div id="ns-content">
@@ -87,31 +113,50 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 							<div class="ns-group-outer">
 								
 	<div class="ns-group-title" id="ns_group_title_Main">
-		<a href="?action=home" onclick="">
-			<img src="graphics/img/admin_setting_group.gif" border="0">User Control Panel
+		<a href="?action=usercp" onclick="">
+			<img src="graphics/img/admin_setting_group.gif" border="0">Admin Control Panel
 		</a>
 	</div>
 	
-	<div style="height: 50px; overflow: hidden;" class="ns-group-links">
-		
+	<div style="height: 100px; overflow: hidden;" class="ns-group-links">
 <div class="ns-group-link">
 	
-	<a href="?action=pass_change" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change your password
+	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
+	</a>
+</div>		
+
+
+<div class="ns-group-link">
+	
+	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Ban/Unban
 	</a>
 </div>
 
 <div class="ns-group-link">
 	
 	<a href="?action=vote_redeem" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Vote & Redeem
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Transfer character
+	</a>
+</div>
+
+<div class="ns-group-link">
+	
+	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">View logs
+	</a>
+</div>
+<div class="ns-group-link">
+	
+	<a href="?action=pass_change" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Edit Vote&Redeem settings
 	</a>
 </div>
 
 
-</div>
-							&nbsp;
-						</td>
+							
+					
 						<td id="ns-center-col">
 							
 								<div class="ns-msg-none">
@@ -122,7 +167,28 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 								
 <div id="ns-settings-group-Main-summary" class="ns-settings-ctr" style="">
 
-<?php $this->Content(); ?>
+<a name="summary_debug_and_logs"></a>
+<div class="ns-setting-group-info">
+		<img alt="information" src="graphics/img/icon_information.gif"><h2>Aion Content Management System (CMS)</h2>
+		<p><br>Welcome <?php echo $_SESSION['name'];?> ! Here you can enjoy premium services such as management of your account, collecting and redeeming your vote-points etc..<br></p>
+	</div>
+
+	<table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody><tr class="ns-module-summary-row  ns-setting-row-odd">
+				<td class="ns-setting-group-cell" align="left">
+				    <a class="ns-module-setting-link" href="?action=pass_change" onclick="">
+					Change your password
+					</a><br>
+					Change your current password to another one..
+				</td>						
+			</tr>
+			<tr class="ns-module-summary-row  ns-setting-row-even">
+				<td class="ns-setting-group-cell" align="left">
+				    <a class="ns-module-setting-link" href="?action=vote_redeem" onclick="">
+					Vote & Redeem
+					</a><br>
+					Here you can vote for the server , earn vote points and redeem them for special in-game rewards..
+				</td>
 	
 				</tbody></table>
 			</div>
@@ -130,4 +196,26 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 	
 	</div>
-</body></html>
+</body></html>						
+			
+                     <?php  
+                 }    
+
+	function Content() //calls the form function
+	{
+
+if($_SESSION["access_level"] < 2)
+{
+	echo "<script>location.href='.'</script>";
+	exit;
+}
+                  $this->Form();
+
+	}
+
+                     function __construct() //builds the pade by sending its content to the core html 
+	{
+		$this->Content();
+	}
+}
+?>
