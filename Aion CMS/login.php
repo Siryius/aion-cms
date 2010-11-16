@@ -2,9 +2,7 @@
 
 //includes
 require_once("class/login.php");
-include("config.php");
-
-
+require_once("config.php");
 class login // core class -needed by index.php
 
 
@@ -80,6 +78,8 @@ class login // core class -needed by index.php
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<script src="graphics/js/SpryTooltip.js" type="text/javascript"></script>
+<link href="graphics/js/SpryTooltip.css" rel="stylesheet" type="text/css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>.:: Aion CMS : Login ::.</title>
@@ -138,7 +138,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
  
 
 			<br style="clear: both;">
-		</div>
+  </div>
 		
 		<div id="ns-nav-bar">
 			Aion CMS - Login
@@ -179,7 +179,11 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 				
 			</form>
 		</div>
-                        </div>
+</div>
+<div class="tooltipContent" id="sprytooltip1">Please enter the username which you use to login in server!</div>
+<script type="text/javascript">
+var sprytooltip1 = new Spry.Widget.Tooltip("sprytooltip1", "#name");
+</script>
 </body></html> <?php
                                             }        	
                 
@@ -190,7 +194,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 	
 
                                              function __construct()
-	                                           {
+	                                           {        
 		                                  $this->Content();
 	                                           }
                      

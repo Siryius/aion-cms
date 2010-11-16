@@ -18,7 +18,7 @@ class register // core class -needed by index.php
 
 if ($_POST['Submit']){
 
-  require_once('recaptchalib.php');
+  require_once('class/recaptchalib.php');
   $privatekey = "6Lc2s74SAAAAAJeg0lb6O_xiu5X7CE4JhZoOHb0w";
   $resp = recaptcha_check_answer ($privatekey,
   $_SERVER["REMOTE_ADDR"],
@@ -28,7 +28,14 @@ if ($_POST['Submit']){
 
   if (!$resp->is_valid) 
 {
-$msg = "<font color=red>$local[214]</font>";
+  $msg = '<table id="ns_login_table" align="center">
+					<tr>
+						
+						<td><font color=red>You have entered wrong Captcha Code!</font></td>
+						
+					</tr>
+
+				</table>';
   } else {
 
 if ($_POST['Submit']){
@@ -57,7 +64,16 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 		"INSERT INTO account_data (name,password) 
 				VALUES ('$login','$encode_password')") 
 		or die(xml_lang('errquery'));
-   $msg = "<font color=green>Your registration has beed successfully completed , you will be redirected in login page in 5 seconds!</font>";
+
+     $msg = '<table id="ns_login_table" align="center">
+					<tr>
+						
+						<td><font color=green>Your registration has beed successfully completed  , you will be redirected in login page in 5 seconds!</font></td>
+						
+					</tr>
+					
+					
+				</table>';
         
 	?></script><meta http-equiv="REFRESH" content="5;url=index.php"><?php
 	}
@@ -131,7 +147,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		</div>
 		
 		<div id="ns-nav-bar">
-			Aion CMS - Register <?php echo $msg;?>
+			Aion CMS - Register 
 		</div>
 		
 		<div id="ns-content"><br><br><br><br><br><br>
@@ -143,12 +159,14 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 <link href="graphics/js/SpryValidationPassword.css" rel="stylesheet" type="text/css" />
 <link href="graphics/js/SpryValidationConfirm.css" rel="stylesheet" type="text/css" />
 </head>
-<?php echo $msg;?>
+
 
 <body>
 <form id="form1" name="form1" method="post" action="?action=register">
    <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
 				</tbody><tbody class="ns-standard-setting" style="">
+
+
 
     <tr>
       <th width="290" scope="col"><table width="600" border="0" align="center">
@@ -208,7 +226,7 @@ A value is required.</span><span class="passwordMinCharsMsg">Minimum number of c
       <th scope="row" align="left"><input class="text" type="submit" name="Submit" value="Register" /></th>
     </tr>
 
-
+<?php echo $msg;?>
   </table>
 </form>
 <script type="text/javascript">
