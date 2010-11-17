@@ -3,9 +3,9 @@
 //includes
 require_once("class/login.php");
 require_once("config.php");
+
+
 class login // core class -needed by index.php
-
-
 
 {
 

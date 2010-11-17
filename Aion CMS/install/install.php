@@ -6,11 +6,99 @@ $sqlErrorText = '';
 $sqlErrorCode = 0;
 $sqlStmt      = '';
 $sqlFileToExecute = 'loginserver.sql';
-$sqlFileToExecute1 = 'gameserver.sql';
-$status = '';
+$sqlFileToExecute1 = 'aion_cms.sql';
+
+    if (isset($_POST['submitBtn']))
+
+{
+        $host = isset($_POST['hostname']) ? $_POST['hostname'] : '';
+        $user = isset($_POST['username']) ? $_POST['username'] : '';
+        $pass = isset($_POST['password']) ? $_POST['password'] : '';
+        $lsdb = isset($_POST['lsdb']) ? $_POST['lsdb'] : '';
+        $acdb = isset($_POST['acdb']) ? $_POST['acdb'] : '';
+
+        
+        $con = mysql_connect($host,$user,$pass);
+        mysql_select_db($lsdb);
+        if ($con !== false)
+
+{
+           // Load and explode the sql file
+           $f = fopen($sqlFileToExecute,"r+");
+           $sqlFile = fread($f,filesize($sqlFileToExecute));
+           $sqlArray = explode(';',$sqlFile);
+           
+           //Process the sql file by statements
+           foreach ($sqlArray as $stmt) 
+
+{
+              if (strlen($stmt)>3)
+
+{
+           	     $result = mysql_query($stmt);
+           	     if (!$result)
+
+{
+           	       $sqlErrorCode = mysql_errno();
+           	        $sqlErrorText = mysql_error();
+           	        $sqlStmt      = $stmt;
+                         break;
+         
+           	     }
+           	  }
+           }
 
 
+        }
+
+    $con2 = mysql_connect($host,$user,$pass);
+        mysql_select_db($acdb);
+        if ($con2 !== false)
+
+   {
+           // Load and explode the sql file
+           $f1 = fopen($sqlFileToExecute1,"r+");
+           $sqlFile1 = fread($f1,filesize($sqlFileToExecute1));
+           $sqlArray1 = explode(';',$sqlFile1);
+           
+           //Process the sql file by statements
+           foreach ($sqlArray1 as $stmt1) 
+
+       {
+              if (strlen($stmt1)>3)
+
+                         {
+           	     $result1 = mysql_query($stmt1);
+           	     if (!$result1)
+
+                                   {
+           	         $sqlErrorCode = mysql_errno();
+           	        $sqlErrorText = mysql_error();
+           	        $sqlStmt      = $stmt;
+                         break;
+         
+           	     }
+           	  }
+           }
+
+
+        }
+
+        if ($sqlErrorCode == 0)
+
+{	
+		$msg = '<font color="green"><br><p>Aion CMS has successfully been installed!</p></font>';
+
+        } else {	
+                                 
+		$msg = "<br><p>Error code: $sqlErrorCode </p>
+              <p>Error text: $sqlErrorText </p>
+             <p>Statement: $sqlStmt </p>";
+
+        }
+}
 ?>
+
 <style type="text/css" media="all">@import url( "../graphics/style.css" );</style>
 
 </head><body>
@@ -69,16 +157,17 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		</div>
 		
 		<div id="ns-content">
+<table id="ns-main-table" cellpadding="0" cellspacing="0" width="50%" align="center">
+					<tbody><tr>
 
-
-                                      
-                                                  
+                      <td id="ns-left-col">                
+                     <div id="ns-settings-group-Main-summary" class="ns-settings-ctr" style="">                             
 <div class="ns-setting-group-info">
 		<img alt="information" src="../graphics/img/icon_information.gif"><h2>Installer</h2>
-		<p><br>Install easily your AION CMS within a few clicks!</p><br>
-                                     
+		<p><br>Install easily your AION CMS within a few clicks!</p>
+                                     <?php echo $msg;?>
 	</div>
-
+<br>
       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="dbdata">
         <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
 				</tbody><tbody class="ns-standard-setting" style="">
@@ -119,11 +208,11 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
           <tr class="ns-field-row ns-setting-row-even">
 				<td class="ns-label-cell">
-						<label>Gameserver's DB:</label><br>
-						<span>Put here the database of your AION gameserver (for example: aengine_gs)
+						<label>Aion CMS's DB:</label><br>
+						<span>Put here the database which Aion CMS will use (default: aion_cms)
 				</td>
 				<td class="ns-input-cell">
-						<input class="text" name="gsdb" type="text" size="45" value="" />
+						<input class="text" name="acdb" type="text" size="45" value="aion_cms" />
 				</td>
 			</tr> 
 
@@ -142,110 +231,8 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
         </table>  
       </form>
 
-<?php    
-    if (isset($_POST['submitBtn']))
 
-{
-        $host = isset($_POST['hostname']) ? $_POST['hostname'] : '';
-        $user = isset($_POST['username']) ? $_POST['username'] : '';
-        $pass = isset($_POST['password']) ? $_POST['password'] : '';
-        $lsdb = isset($_POST['lsdb']) ? $_POST['lsdb'] : '';
-        $gsdb = isset($_POST['gsdb']) ? $_POST['gsdb'] : '';
-
-        
-        $con = mysql_connect($host,$user,$pass);
-        mysql_select_db($lsdb);
-        if ($con !== false)
-
-{
-           // Load and explode the sql file
-           $f = fopen($sqlFileToExecute,"r+");
-           $sqlFile = fread($f,filesize($sqlFileToExecute));
-           $sqlArray = explode(';',$sqlFile);
-           
-           //Process the sql file by statements
-           foreach ($sqlArray as $stmt) 
-
-{
-              if (strlen($stmt)>3)
-
-{
-           	     $result = mysql_query($stmt);
-           	     if (!$result)
-
-{
-           	       $sqlErrorCode = mysql_errno();
-           	        $sqlErrorText = mysql_error();
-           	        $sqlStmt      = $stmt;
-                         break;
-         
-           	     }
-           	  }
-           }
-
-
-        }
-
-    $con = mysql_connect($host,$user,$pass);
-        mysql_select_db($gsdb);
-        if ($con !== false)
-
-   {
-           // Load and explode the sql file
-           $f1 = fopen($sqlFileToExecute1,"r+");
-           $sqlFile1 = fread($f1,filesize($sqlFileToExecute1));
-           $sqlArray1 = explode(';',$sqlFile1);
-           
-           //Process the sql file by statements
-           foreach ($sqlArray1 as $stmt1) 
-
-       {
-              if (strlen($stmt1)>3)
-
-                         {
-           	     $result1 = mysql_query($stmt1);
-           	     if (!$result1)
-
-                                   {
-           	         $sqlErrorCode = mysql_errno();
-           	        $sqlErrorText = mysql_error();
-           	        $sqlStmt      = $stmt;
-                         break;
-         
-           	     }
-           	  }
-           }
-
-
-        }
-
-?>
-
-      <div id="icon2">&nbsp;</div>
-      <div id="result">
-        <table width="100%">
-
-<?php
-        if ($sqlErrorCode == 0)
-
-{
-     ?> <div class="ns-setting-group-info">
-		<img alt="information" src="../graphics/img/icon_information.gif"><h2><font color="red">Success</h2></font>
-		<br><p>Aion CMS has successfully been installed!</p>
-             </div><?php
-	
-        } else {	
-                                 ?> <div class="ns-setting-group-info">
-		<img alt="information" src="../graphics/img/icon_information.gif"><h2><font color="red">Error</h2></font>
-		<br><p>Error code: <?php echo $sqlErrorCode; ?></p>
-              <p>Error text: <?php echo $sqlErrorText; ?></p>
-             <p>Statement:<?php echo $sqlStmt;?></p></div><?php
-
-        }
-?>
         </table>
      </div>
-<?php            
-    }
-?>
+
 	

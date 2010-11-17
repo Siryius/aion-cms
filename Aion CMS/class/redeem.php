@@ -4,13 +4,14 @@ function GetRealmData()
 	{
 		//Get data to use in the form.
 		$Con = mysql_connect(sql_host,sql_user,sql_pass,true);
-		mysql_select_db(Gamedb,$Con);
+		mysql_select_db(Cmsdb,$Con);
 		
 		$RealmInfo = "{";
 		//get each realm
 		$res = mysql_query("SELECT id,name,sqlhost,sqluser,sqlpass,chardb FROM realms",$Con);
 		echo mysql_error();
 		while($Row = mysql_fetch_array($res))
+                                     
 		{
 			$RealmInfo .= $Row['id'].":{name:\"".$Row['name']."\"},";
 		}
@@ -26,22 +27,24 @@ function GetRealmData()
 	{
 		//get data that will be used to select the character.
 		$Con = mysql_connect(sql_host,sql_user,sql_pass,true);
-		mysql_select_db(Gamedb,$Con);
+		mysql_select_db(Cmsdb,$Con);
 		
 		$CharInfo = "{";
 		$Index = 0;
 		$res = mysql_query("SELECT id,sqlhost,sqluser,sqlpass,chardb FROM realms");
 		while($Row = mysql_fetch_array($res))
 		{
-			$Con2 = mysql_connect($Row['sqlhost'],$Row['sqluser'],$Row['sqlpass'],true);
-			mysql_select_db($Row['chardb'],$Con2);
+			//$Con2 = mysql_connect($Row['sqlhost'],$Row['sqluser'],$Row['sqlpass'],true);
+			//mysql_select_db($Row['chardb'],$Con2);
+
+			mysql_select_db(Gamedb,$Con);
 			$res2 = mysql_query("SELECT id,name FROM players WHERE account_id = '{$_SESSION['id1']}'",$Con);
 			while($Row2 = mysql_fetch_array($res2))
 			{
 				$CharInfo .= $Index.":{id:".$Row2['id'].",realm:".$Row['id'].",name:\"".$Row2['name']."\"},";
 				$Index++;
 			}
-			mysql_close($Con2);
+			
 		}
 		if(strlen($CharInfo) > 1)
 			$CharInfo = substr($CharInfo,0,strlen($CharInfo)-1)."}";
@@ -55,10 +58,10 @@ function GetRealmData()
 	{
 		//rewards.. etc.
 		$Con = mysql_connect(sql_host,sql_user,sql_pass,true);
-		mysql_select_db(Gamedb,$Con);
+		mysql_select_db(Cmsdb,$Con);
 		
 		$RewardInfo = "{";
-		$res = mysql_query("SELECT id,realm,name,description,points FROM voterewards1 WHERE realm='1'");
+		$res = mysql_query("SELECT id,realm,name,description,points FROM vote_rewards WHERE realm='1'");
 		while($Row = mysql_fetch_array($res))
                                  
 		{

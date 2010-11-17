@@ -2,7 +2,7 @@
 
 //multilang support
 //language select
-$lang = "en";
+$lang = "ru";
 
 
 //configure
@@ -23,6 +23,7 @@ define("sql_user","root");
 define("sql_pass","aion");
 define("Logindb","aengine_ls");
 define("Gamedb","aengine_gs");
+define("Cmsdb","aion_cms");
 $conn = @mysql_connect(sql_host, sql_user, sql_pass) or die(mysql_error());
 
 // mail-function (subject-body of mail)

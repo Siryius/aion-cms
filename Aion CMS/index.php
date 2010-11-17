@@ -75,42 +75,9 @@ case "vote_settings":
                    new vote_settings();
 	break;
 
-case "spend1":
+case "spend":
 	include("class/spend.php");
-                   new Spend1();
-	break;
-
-case "spend2":
-	include("class/spend.php");
-                   new Spend2();
-	break;
-case "spend3":
-	include("class/spend.php");
-                   new Spend3();
-	break;
-case "spend4":
-	include("class/spend.php");
-                   new Spend4();
-	break;
-case "spend5":
-	include("class/spend.php");
-                   new Spend5();
-	break;
-case "spend6":
-	include("class/spend.php");
-                   new Spend6();
-	break;
-case "spend7":
-	include("class/spend.php");
-                   new Spend7();
-	break;
-case "spend8":
-	include("class/spend.php");
-                   new Spend8();
-	break;
-case "spend9":
-	include("class/spend.php");
-                   new Spend9();
+                   new Spend();
 	break;
 
 case "logout":

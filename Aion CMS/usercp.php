@@ -110,24 +110,20 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			</div>
 
 			<div id="ns-content">
-				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="100%">
-					<tbody><tr>
+				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="75%">
+					
+
 						<td id="ns-left-col">
+
+
 							<div class="ns-group-outer">
 								
 	<div class="ns-group-title" id="ns_group_title_Main">
 		<a href="?action=usercp" onclick="">
-			<img src="graphics/img/admin_setting_group.gif" border="0">User Control Panel
+			<img src="graphics/img/admin_setting_group.gif" border="0">Account
 		</a>
 	</div>
 	
-	<div style="height: 100px; overflow: hidden;" class="ns-group-links">
-<div class="ns-group-link">
-	
-	<a href="?action=" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
-	</a>
-</div>		
 
 
 <div class="ns-group-link">
@@ -136,6 +132,33 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Inventory editor
 	</a>
 </div>
+
+
+
+<div class="ns-group-link">
+	
+	<a href="?action=pass_change" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change your password
+	</a>
+</div>
+
+
+<div class="ns-group-title" id="ns_group_title_Main">
+		<a href="?action=usercp" onclick="">
+			<img src="graphics/img/admin_setting_group.gif" border="0">Server
+		</a>
+	</div>
+	
+	
+<div class="ns-group-link">
+	
+	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
+	</a>
+</div>		
+
+
+
 
 <div class="ns-group-link">
 	
@@ -150,17 +173,10 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Donate
 	</a>
 </div>
-<div class="ns-group-link">
-	
-	<a href="?action=pass_change" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change your password
-	</a>
-</div>
 
-
-							
+						
 					
-						<td id="ns-center-col">
+						<td id="ns-left-col" >
 							
 								<div class="ns-msg-none">
 									<img alt="information" src="graphics/img/icon_information.gif">

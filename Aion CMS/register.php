@@ -95,6 +95,14 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 
 </head><body>
 
+<script src="graphics/js/SpryValidationTextField.js" type="text/javascript"></script>
+<script src="graphics/js/SpryValidationPassword.js" type="text/javascript"></script>
+<script src="graphics/js/SpryValidationConfirm.js" type="text/javascript"></script>
+<link href="graphics/js/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<link href="graphics/js/SpryValidationPassword.css" rel="stylesheet" type="text/css" />
+<link href="graphics/js/SpryValidationConfirm.css" rel="stylesheet" type="text/css" />
+</head>
+
 <style>
 #demo-notice	{ background: #4558A4 url(graphics/img/bg-gradient3.gif) repeat-x scroll left top; color: #FFF; 
 					margin: 10px; padding: 10px; border: 1px solid red; text-align: left; font-size: 14px; 
@@ -150,40 +158,35 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			Aion CMS - Register 
 		</div>
 		
-		<div id="ns-content"><br><br><br><br><br><br>
+		<div id="ns-content">
 
-<script src="graphics/js/SpryValidationTextField.js" type="text/javascript"></script>
-<script src="graphics/js/SpryValidationPassword.js" type="text/javascript"></script>
-<script src="graphics/js/SpryValidationConfirm.js" type="text/javascript"></script>
-<link href="graphics/js/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
-<link href="graphics/js/SpryValidationPassword.css" rel="stylesheet" type="text/css" />
-<link href="graphics/js/SpryValidationConfirm.css" rel="stylesheet" type="text/css" />
-</head>
+<table id="ns-main-table" cellpadding="0" cellspacing="0" width="35%" align="center">
+					<tbody><tr>
+						<td id="ns-left-col"><br><br><br><br>
+				
+<div id="ns-settings-group-Main-summary" class="ns-settings-ctr" style="">
 
-
-<body>
-<form id="form1" name="form1" method="post" action="?action=register">
-   <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+<table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
 				</tbody><tbody class="ns-standard-setting" style="">
+<form id="form1" name="form1" method="post" action="?action=register">
 
-
-
-    <tr>
-      <th width="290" scope="col"><table width="600" border="0" align="center">
+    
+  
         <tr class="ns-field-row ns-setting-row-odd">
          <td class="ns-label-cell">
 						<label>Username:</label>
 						<span><br>It must be between 5 and 18 letters. 
 				</td>
-          <th width="310" scope="col"><span id="sprytextfield1">
+     
+<td><span id="sprytextfield1">   
             <input type="text" name="name" id="name" />
             <span class="textfieldRequiredMsg"><br />
-            A value is required.</span></span></th>
-        </tr>
+            A value is required.</span></td>
+          </tr>
 
       
            <tr class="ns-field-row ns-setting-row-even">
-         <td class="ns-label-cell">
+         <td class="ns-label-cell" align="center">
         <label>Password:</label>
           <span><br>It must be between 5 and 18 letters. </td>
           <td><span id="sprypassword1">
@@ -226,8 +229,10 @@ A value is required.</span><span class="passwordMinCharsMsg">Minimum number of c
       <th scope="row" align="left"><input class="text" type="submit" name="Submit" value="Register" /></th>
     </tr>
 
-<?php echo $msg;?>
+
   </table>
+
+
 </form>
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none", {validateOn:["blur", "change"], minChars:5, maxChars:18});
@@ -235,6 +240,8 @@ var sprypassword1 = new Spry.Widget.ValidationPassword("sprypassword1", {validat
 var spryconfirm1 = new Spry.Widget.ValidationConfirm("spryconfirm1", "pass", {validateOn:["blur", "change"]});
 </script>
 </body>
+
+<?php echo $msg;?>
 </html><?php
  
 }

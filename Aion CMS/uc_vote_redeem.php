@@ -116,24 +116,19 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			</div>
 
 			<div id="ns-content">
-				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="100%">
+				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="90%">
 					<tbody><tr>
 						<td id="ns-left-col">
+
+
 							<div class="ns-group-outer">
 								
 	<div class="ns-group-title" id="ns_group_title_Main">
 		<a href="?action=usercp" onclick="">
-			<img src="graphics/img/admin_setting_group.gif" border="0">User Control Panel
+			<img src="graphics/img/admin_setting_group.gif" border="0">Account
 		</a>
 	</div>
 	
-	<div style="height: 100px; overflow: hidden;" class="ns-group-links">
-<div class="ns-group-link">
-	
-	<a href="?action=" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
-	</a>
-</div>		
 
 
 <div class="ns-group-link">
@@ -142,6 +137,33 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Inventory editor
 	</a>
 </div>
+
+
+
+<div class="ns-group-link">
+	
+	<a href="?action=pass_change" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change your password
+	</a>
+</div>
+
+
+<div class="ns-group-title" id="ns_group_title_Main">
+		<a href="?action=usercp" onclick="">
+			<img src="graphics/img/admin_setting_group.gif" border="0">Server
+		</a>
+	</div>
+	
+	
+<div class="ns-group-link">
+	
+	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
+	</a>
+</div>		
+
+
+
 
 <div class="ns-group-link">
 	
@@ -156,17 +178,11 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Donate
 	</a>
 </div>
-<div class="ns-group-link">
-	
-	<a href="?action=pass_change" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change your password
-	</a>
-</div>
 
 
 							
 					
-						<td id="ns-center-col">
+						<td id="ns-left-col" >
 							
 								<div class="ns-msg-none">
 									<img alt="information" src="graphics/img/icon_information.gif">
@@ -178,9 +194,9 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 <a name="summary_debug_and_logs"></a>
                      <div class="ns-setting-group-info">
-		<img alt="information" src="graphics/img/icon_information.gif"><h2>Vote&Redeem</h2>
+		<img alt="information" src="graphics/img/icon_information.gif"><h2>Vote & Redeem</h2>
 		<p><br>Here you can vote for our server , collect reward_points and redeem them for cool prizes!<br></p>
-                                    <p><br><br></p>
+                                   
 	</div>
 <br>
                                         <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -319,7 +335,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 					{
 						if(Rewards[r].realm == parseInt(Realm.value))
 						{
-							Reward.options[i] = new Option(Rewards[r].name+" x "+(Rewards[r].description/1000000)+"M",r); 
+							Reward.options[i] = new Option(Rewards[r].description+" - //"+(Rewards[r].name)+"// ("+(Rewards[r].cost)+" VP)",r); 
 							i++;
 						}
 					}
@@ -382,7 +398,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 							}
 						}
 					}
-					R.open("POST","?action=spend1",true);
+					R.open("POST","?action=spend",true);
 					var params = "realm="+Realm.value+"&reward="+Reward.value+"&character="+Character.value;
 					R.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					R.setRequestHeader("Content-length",params.length);

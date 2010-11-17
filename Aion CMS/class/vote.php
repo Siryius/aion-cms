@@ -5,9 +5,9 @@
 	{
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='1'");
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM vote_links WHERE id='1'");
 		while($Row = mysql_fetch_array($res))
                                      {
 			$r = mysql_query("SELECT time FROM votes WHERE module='1' AND ip='{$_SERVER['REMOTE_ADDR']}'");
@@ -30,10 +30,8 @@
 					<input name="module" type="hidden" value="<?php echo $Row['id']; ?>" />
 					<input name="to" type="hidden" value="<?php echo $Row['url']; ?>" />
 					
-						
 						<td width="20"></td>
-						<td align="top"><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link1"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
-					
+						<td ><FORM METHOD="LINK" ACTION="?action=vote_redeem&vote=link1"><INPUT ALT="Click to Vote" title="Click to Vote!" TYPE="image" src="<?php echo $Row['image'];?>" name="account" VALUE="<?php echo $_SESSION['account']; ?>"></FORM><br><b>Reward points: <b><?php echo $Row['reward_points']; ?><br><b><?php echo $time; ?></b><br></td>
 				</form>
 			<?php
 		}
@@ -45,12 +43,12 @@ function GetVoteForm2()
 	{
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='4'");
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM vote_links WHERE id='2'");
 		while($Row = mysql_fetch_array($res))
                                      {
-			$r = mysql_query("SELECT time FROM votes WHERE module='4' AND ip='{$_SERVER['REMOTE_ADDR']}'");
+			$r = mysql_query("SELECT time FROM votes WHERE module='2' AND ip='{$_SERVER['REMOTE_ADDR']}'");
 			if(!$R = mysql_fetch_array($r))
 				$time = "You can vote now!" ;
 			else
@@ -83,12 +81,12 @@ function GetVoteForm2()
 	{
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='3'");
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM vote_links WHERE id='3'");
 		while($Row = mysql_fetch_array($res))
                                      {
-			$r = mysql_query("SELECT time FROM votes WHERE module='4' AND ip='{$_SERVER['REMOTE_ADDR']}'");
+			$r = mysql_query("SELECT time FROM votes WHERE module='3' AND ip='{$_SERVER['REMOTE_ADDR']}'");
 			if(!$R = mysql_fetch_array($r))
 				$time = "You can vote now!" ;
 			else
@@ -122,9 +120,9 @@ function GetVoteForm2()
 	{
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='4'");
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM vote_links WHERE id='4'");
 		while($Row = mysql_fetch_array($res))
                                      {
 			$r = mysql_query("SELECT time FROM votes WHERE module='4' AND ip='{$_SERVER['REMOTE_ADDR']}'");
@@ -163,9 +161,9 @@ function GetVoteForm2()
 	{
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='5'");
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM vote_links WHERE id='5'");
 		while($Row = mysql_fetch_array($res))
                                      {
 			$r = mysql_query("SELECT time FROM votes WHERE module='5' AND ip='{$_SERVER['REMOTE_ADDR']}'");
@@ -202,9 +200,9 @@ function GetVoteForm2()
 	{
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='6'");
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM vote_links WHERE id='6'");
 		while($Row = mysql_fetch_array($res))
                                      {
 			$r = mysql_query("SELECT time FROM votes WHERE module='6' AND ip='{$_SERVER['REMOTE_ADDR']}'");
@@ -241,9 +239,9 @@ function GetVoteForm2()
 	{
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='7'");
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM vote_links WHERE id='7'");
 		while($Row = mysql_fetch_array($res))
                                      {
 			$r = mysql_query("SELECT time FROM votes WHERE module='7' AND ip='{$_SERVER['REMOTE_ADDR']}'");
@@ -281,9 +279,9 @@ function GetVoteForm2()
 	{
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='8'");
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM vote_links WHERE id='8'");
 		while($Row = mysql_fetch_array($res))
                                      {
 			$r = mysql_query("SELECT time FROM votes WHERE module='8' AND ip='{$_SERVER['REMOTE_ADDR']}'");
@@ -321,9 +319,9 @@ function GetVoteForm2()
 	{
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
                                     mysql_query("DELETE FROM votes WHERE time < ".(time()-12*60*60));
-		$res = mysql_query("SELECT id,name,image,url,reward_points FROM votemodules WHERE id='9'");
+		$res = mysql_query("SELECT id,name,image,url,reward_points FROM vote_links WHERE id='9'");
 		while($Row = mysql_fetch_array($res))
                                      {
 			$r = mysql_query("SELECT time FROM votes WHERE module='9' AND ip='{$_SERVER['REMOTE_ADDR']}'");
@@ -411,13 +409,13 @@ if($_GET['vote'] == "link9")
 		
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
 		
 		//redirect
 		header("Location: {$To}\r\n");
 		
 		//check that the module exists
-		if(mysql_result(mysql_query("SELECT COUNT(*) FROM votemodules WHERE id='{$Module}'"),0) != 1)
+		if(mysql_result(mysql_query("SELECT COUNT(*) FROM vote_links WHERE id='{$Module}'"),0) != 1)
 			return;
 			
 		//check if the user or account has been accredited for a vote within the last 12 hrs.
@@ -452,13 +450,13 @@ function TallyVote2()
 		
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
 		
 		//redirect
 		header("Location: {$To}\r\n");
 		
 		//check that the module exists
-		if(mysql_result(mysql_query("SELECT COUNT(*) FROM votemodules WHERE id='{$Module}'"),0) != 1)
+		if(mysql_result(mysql_query("SELECT COUNT(*) FROM vote_links WHERE id='{$Module}'"),0) != 1)
 			return;
 			
 		//check if the user or account has been accredited for a vote within the last 12 hrs.
@@ -493,13 +491,13 @@ function TallyVote3()
 		
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
 		
 		//redirect
 		header("Location: {$To}\r\n");
 		
 		//check that the module exists
-		if(mysql_result(mysql_query("SELECT COUNT(*) FROM votemodules WHERE id='{$Module}'"),0) != 1)
+		if(mysql_result(mysql_query("SELECT COUNT(*) FROM vote_links WHERE id='{$Module}'"),0) != 1)
 			return;
 			
 		//check if the user or account has been accredited for a vote within the last 12 hrs.
@@ -534,13 +532,13 @@ function TallyVote4()
 		
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
 		
 		//redirect
 		header("Location: {$To}\r\n");
 		
 		//check that the module exists
-		if(mysql_result(mysql_query("SELECT COUNT(*) FROM votemodules WHERE id='{$Module}'"),0) != 1)
+		if(mysql_result(mysql_query("SELECT COUNT(*) FROM vote_links WHERE id='{$Module}'"),0) != 1)
 			return;
 			
 		//check if the user or account has been accredited for a vote within the last 12 hrs.
@@ -575,13 +573,13 @@ function TallyVote5()
 		
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
 		
 		//redirect
 		header("Location: {$To}\r\n");
 		
 		//check that the module exists
-		if(mysql_result(mysql_query("SELECT COUNT(*) FROM votemodules WHERE id='{$Module}'"),0) != 1)
+		if(mysql_result(mysql_query("SELECT COUNT(*) FROM vote_links WHERE id='{$Module}'"),0) != 1)
 			return;
 			
 		//check if the user or account has been accredited for a vote within the last 12 hrs.
@@ -615,13 +613,13 @@ function TallyVote6()
 		$Ip = $_SERVER['REMOTE_ADDR'];
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
 		
 		//redirect
 		header("Location: {$To}\r\n");
 		
 		//check that the module exists
-		if(mysql_result(mysql_query("SELECT COUNT(*) FROM votemodules WHERE id='{$Module}'"),0) != 1)
+		if(mysql_result(mysql_query("SELECT COUNT(*) FROM vote_links WHERE id='{$Module}'"),0) != 1)
 			return;
 			
 		//check if the user or account has been accredited for a vote within the last 12 hrs.
@@ -656,13 +654,13 @@ function TallyVote7()
 		
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
 		
 		//redirect
 		header("Location: {$To}\r\n");
 		
 		//check that the module exists
-		if(mysql_result(mysql_query("SELECT COUNT(*) FROM votemodules WHERE id='{$Module}'"),0) != 1)
+		if(mysql_result(mysql_query("SELECT COUNT(*) FROM vote_links WHERE id='{$Module}'"),0) != 1)
 			return;
 			
 		//check if the user or account has been accredited for a vote within the last 12 hrs.
@@ -697,13 +695,13 @@ function TallyVote8()
 		
 		
 		$Con = mysql_connect(Gamedb_host,Gamedb_user,Gamedb_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
 		
 		//redirect
 		header("Location: {$To}\r\n");
 		
 		//check that the module exists
-		if(mysql_result(mysql_query("SELECT COUNT(*) FROM votemodules WHERE id='{$Module}'"),0) != 1)
+		if(mysql_result(mysql_query("SELECT COUNT(*) FROM vote_links WHERE id='{$Module}'"),0) != 1)
 			return;
 			
 		//check if the user or account has been accredited for a vote within the last 12 hrs.
@@ -738,13 +736,13 @@ function TallyVote9()
 		
 		
 		$Con = mysql_connect(sql_host,sql_user,sql_pass);
-		mysql_select_db(Gamedb);
+		mysql_select_db(Cmsdb);
 
 		//redirect
 		header("Location: {$To}\r\n");
 		
 		//check that the module exists
-		if(mysql_result(mysql_query("SELECT COUNT(*) FROM votemodules WHERE id='{$Module}'"),0) != 1)
+		if(mysql_result(mysql_query("SELECT COUNT(*) FROM vote_links WHERE id='{$Module}'"),0) != 1)
 			return;
 			
 		//check if the user or account has been accredited for a vote within the last 12 hrs.

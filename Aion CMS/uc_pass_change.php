@@ -53,12 +53,12 @@ if(count($_POST) > 2)
 		
 		if($objAccountData->Update())
 		{
-			$msg = "<font color=green>Your password has successfully changed!</font>";
+			$msg = "<p><br><font color=green>Your password has successfully changed!</font></p>";
                                                  
 		} 
 	} else
                        {
-		$msg = "<font color=red>Please enter correctly your current password.</font>";
+		$msg = "<p><br><font color=red>Please enter correctly your current password!</font></p>";
   
 	     }
 }
@@ -153,24 +153,19 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			</div>
 
 			<div id="ns-content">
-				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="100%">
+				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="80%">
 					<tbody><tr>
 						<td id="ns-left-col">
+
+
 							<div class="ns-group-outer">
 								
 	<div class="ns-group-title" id="ns_group_title_Main">
 		<a href="?action=usercp" onclick="">
-			<img src="graphics/img/admin_setting_group.gif" border="0">User Control Panel
+			<img src="graphics/img/admin_setting_group.gif" border="0">Account
 		</a>
 	</div>
 	
-	<div style="height: 100px; overflow: hidden;" class="ns-group-links">
-<div class="ns-group-link">
-	
-	<a href="?action=" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
-	</a>
-</div>		
 
 
 <div class="ns-group-link">
@@ -179,6 +174,33 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Inventory editor
 	</a>
 </div>
+
+
+
+<div class="ns-group-link">
+	
+	<a href="?action=pass_change" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change your password
+	</a>
+</div>
+
+
+<div class="ns-group-title" id="ns_group_title_Main">
+		<a href="?action=usercp" onclick="">
+			<img src="graphics/img/admin_setting_group.gif" border="0">Server
+		</a>
+	</div>
+	
+	
+<div class="ns-group-link">
+	
+	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
+	</a>
+</div>		
+
+
+
 
 <div class="ns-group-link">
 	
@@ -191,12 +213,6 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 	
 	<a href="?action=" onclick="">
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Donate
-	</a>
-</div>
-<div class="ns-group-link">
-	
-	<a href="?action=pass_change" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change your password
 	</a>
 </div>
 
@@ -217,9 +233,9 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
                      <div class="ns-setting-group-info">
 		<img alt="information" src="graphics/img/icon_information.gif"><h2>Change your password</h2>
 		<p><br>Change your current password to another one..<br></p>
-                                    <p><br><?php echo $msg; ?><br></p>
+                                    <?php echo $msg; ?>
 	</div>
-
+<br>
 <form action="" method="post">
             	<input name="pass_change" type="hidden" />
 <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
