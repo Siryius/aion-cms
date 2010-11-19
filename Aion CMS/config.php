@@ -2,7 +2,7 @@
 
 //multilang support
 //language select
-$lang = "ru";
+$lang = "en";
 
 
 //configure
@@ -26,12 +26,7 @@ define("Gamedb","aengine_gs");
 define("Cmsdb","aion_cms");
 $conn = @mysql_connect(sql_host, sql_user, sql_pass) or die(mysql_error());
 
-// mail-function (subject-body of mail)
-
-define("MAIL_SUBJECT","Thanks For Voting!");
-define("MAIL_BODY","Thank you for voting for our server. Here is your reward!");
-
-//vote points for each vote link
+//Vote & Redeem System
 
 define("RPPV1",8); //vote points for vote-link 1 etc
 define("RPPV2",3);
@@ -42,5 +37,20 @@ define("RPPV6",2);
 define("RPPV7",3);
 define("RPPV8",2);
 define("RPPV9",1);
+
+// Donate System
+define(SITE_URL,"http://127.0.0.1:8096"); // COMPLETE url to your web site, NO TRAILING SLASH!
+define(SYS_PATH,"/"); // Path to the directory this file is in, beginning with a slash.
+define(CURRENCY_CODE,"USD"); // Currency code to be used by PayPal.
+define(CURRENCY_CHAR,"$"); // Symbol representing your currency code.
+define(PAYPAL_URL,"www.paypal.com"); // Only change this for sandbox testing.
+define(PAYPAL_EMAIL,"ntemos@live.com"); // The account that donations will go to.
+define(ACP_USERNAME,"admin"); // Username to access the log 
+define(ACP_PASSWORD,"admin"); // Password to access the log
+
+// Mail information.
+define(MAIL_SUBJECT,"Thank You"); // Subject of the reward mail.
+define(MAIL_BODY,"Thank you for supporting our server! Here is your reward!"); // Mail message.
+
 
 ?>

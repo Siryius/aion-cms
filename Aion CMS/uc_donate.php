@@ -1,46 +1,76 @@
-<?php
+<?php 
+ require_once("config.php");
+header("Cache-control: no-cache, must-revalidate\r\n");
 
-//includes
-
-require_once("lang/eng.php");
-require_once("class/login.php");
-include("class/vote.php");
-include("class/redeem.php");
-
-//core class
-
-class vote_redeem
-
-{ 
-
-
-
-//functions
-
-                function Title()  //show the page's title
-                {  
-
-                include("lang/eng.php"); echo $local[4];
-
-                }
-
-
-
-
-
-	function Content()
+	if(isset($_GET['char']))
 	{
-	
-                 ?>
+		$con = mysql_connect(sql_host,sql_user,sql_pass);
+		mysql_select_db(Cmsdb);
+		$Name = mysql_real_escape_string($_GET['char']);
+		$Realm = mysql_real_escape_string($_GET['realm']);
+		$Realm = (int)$Realm+1;
+		$res = mysql_query("SELECT sqlhost,sqluser,sqlpass,chardb FROM realms WHERE id='{$Realm}'");
+		$row = mysql_fetch_array($res);
+		mysql_close($con);
+		$con = mysql_connect($row['sqlhost'],$row['sqluser'],$row['sqlpass']);
+		mysql_select_db($row['chardb']);
+		$res = mysql_query("SELECT id FROM players WHERE name='{$Name}'");
+		if(mysql_num_rows($res) == 1)
+		{
+			$row = mysql_fetch_array($res);
+			echo $row['id'];
+		}
+		else
+		{
+			echo "0";
+			die;
+		}
+		mysql_close($con);
+	}
+	else
+	{
+		$con = mysql_connect(sql_host,sql_user,sql_pass);
+		mysql_select_db(Cmsdb);
+		$res = mysql_query("SELECT id,name FROM realms");
+		$REALMS = "{";
+		while($row = mysql_fetch_array($res))
+		{
+			$REALMS .= ((int)$row['id']-1).":\"".$row['name']."\",";
+		}
+		$REALMS .= "\"undefined\":0}";
+		$res = mysql_query("SELECT entry,name,realm,description,price FROM donate_rewards");
+		$REWARDS = "{";
+		while($row = mysql_fetch_array($res))
+		{
+			$REWARDS .= ((int)$row['entry']-1).":{name:\"".$row['name']."\",realm:".((int)$row['realm']-1).",description:\"".addslashes($row['description'])."\",price:".$row['price']."},";
+			$DESCRIPTIONS .= "<div class=\"\" style=\"padding:2px;\">".$row['description']."</div>";
+		}
+		$REWARDS .= "\"undefined\":0}";
+		$REWARDS = str_replace("\r","\\r",$REWARDS);
+		$REWARDS = str_replace("\n","\\n",$REWARDS);
+
+
+                                  ?> 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
-<title><?php $this->Title(); ?></title> 
+<title><?php ?></title> 
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 
+<link href="graphics/js/SprySlidingPanels.css" rel="stylesheet" type="text/css" />
+<script src="graphics/js/SprySlidingPanels.js" type="text/javascript"></script>
+<script src="graphics/js/SpryEffects.js" type="text/javascript"></script>
+<script src="graphics/js/SpryUtils.js" type="text/javascript"></script>
+<script src="graphics/js/xpath.js" type="text/javascript"></script>
+<script src="graphics/js/SpryData.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.aiondatabase.com/js/exsyndication.js"></script>
 <style type="text/css" media="all">@import url( "graphics/style.css" );</style>
 
 </head><body>
+
+
+
 
 <style>
 #demo-notice	{ background: #4558A4 url(graphics/img/bg-gradient3.gif) repeat-x scroll left top; color: #FFF; 
@@ -111,7 +141,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			<br style="clear: both;">
 		</div>
 
-		<form id="nuseo_admin_form" action="" method="post">
+		
 			<input id="action" name="action" value="save" type="hidden">
 			<input name="tab" value="main" type="hidden">
 		
@@ -120,24 +150,19 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			</div>
 
 			<div id="ns-content">
-				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="100%">
+				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="78%">
 					<tbody><tr>
 						<td id="ns-left-col">
+
+
 							<div class="ns-group-outer">
 								
 	<div class="ns-group-title" id="ns_group_title_Main">
 		<a href="?action=usercp" onclick="">
-			<img src="graphics/img/admin_setting_group.gif" border="0">User Control Panel
+			<img src="graphics/img/admin_setting_group.gif" border="0">Account
 		</a>
 	</div>
 	
-	<div style="height: 100px; overflow: hidden;" class="ns-group-links">
-<div class="ns-group-link">
-	
-	<a href="?action=" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
-	</a>
-</div>		
 
 
 <div class="ns-group-link">
@@ -146,6 +171,33 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Inventory editor
 	</a>
 </div>
+
+
+
+<div class="ns-group-link">
+	
+	<a href="?action=pass_change" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change your password
+	</a>
+</div>
+
+
+<div class="ns-group-title" id="ns_group_title_Main">
+		<a href="?action=usercp" onclick="">
+			<img src="graphics/img/admin_setting_group.gif" border="0">Server
+		</a>
+	</div>
+	
+	
+<div class="ns-group-link">
+	
+	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
+	</a>
+</div>		
+
+
+
 
 <div class="ns-group-link">
 	
@@ -156,22 +208,16 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 <div class="ns-group-link">
 	
-	<a href="?action=" onclick="">
+	<a href="?action=donate" onclick="">
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Donate
 	</a>
 </div>
-<div class="ns-group-link">
-	
-	<a href="?action=pass_change" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change your password
-	</a>
-</div>
 
 
-							
+						
 					
-						<td id="ns-center-col">
-							
+						<td id="ns-left-col" >
+							<br><br>
 								<div class="ns-msg-none">
 									<img alt="information" src="graphics/img/icon_information.gif">
 									<p><br></p>
@@ -182,301 +228,202 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 <a name="summary_debug_and_logs"></a>
                      <div class="ns-setting-group-info">
-		<img alt="information" src="graphics/img/icon_information.gif"><h2>Vote&Redeem</h2>
-		<p><br>Here you can vote for our server , collect reward_points and redeem them for cool prizes!<br></p>
-                                    <p><br><?php echo $msg; ?><br></p>
+		<img alt="information" src="graphics/img/icon_information.gif"><h2>Donate</h2>
+		<p><br>Here you can donate for our server and depending on the amount of donation you can earn cool prizes!<br></p>
+                                   
 	</div>
-
+<br>
                                         <table class="ns-setting-table" border="0" cellpadding="0" cellspacing="0" width="100%">
 				</tbody><tbody class="ns-standard-setting" style="">
+
 			<tr class="ns-field-row ns-setting-row-odd">
 				<td class="ns-label-cell">
-						<label>Your Reward Points</label><br>
-						<span>Reward points you have collected so far by voting</span>
+						<label>Server :</label><br>
+						<span>Select the server in which you have the character , which will earn the prize.</span>
 				</td>
 				<td class="ns-input-cell">
+<select id="realm" name="realm" style="width:150px;" onchange="getRewards(this.value);">
+        <option>Your browser does not support this page.</option>
+      </select></tr>
 
-<table><tr><td width="20"></td><td valign="mid"><b><?php echo  $_SESSION['points'];?><b></td></tr></table>
+<tr class="ns-field-row ns-setting-row-even">
+			<td class="ns-label-cell">
+						<label>Character :</label><br>
+						<span>Select the character who will earn the prize. If the icon is red, you have entered a non-existing character name.</span></td>
+		<td class="ns-input-cell">
+
+<input type="text" onblur="checkChar(this.value);" name="character" id="character" maxlength="16" style="width:150px;" />
+    <img id="status" src="graphics/img/notok.png" style="margin-left:5px; vertical-align:middle;" alt="Status" />      
 			</tr>
-                                                                   
-                                                                     </tbody><tbody class="ns-standard-setting" style="">
 
-			<tr class="ns-field-row ns-setting-row-even">
+<tr class="ns-field-row ns-setting-row-odd" >
 				<td class="ns-label-cell">
-						<label>Vote Links:</label><br>
-						<span>Choode a vote page and click to proceed to voting</span>
+						<label>Reward :</label><br>
+						<span>Select the reward , which you will earn because of the donation.</span>
 				</td>
 				<td class="ns-input-cell">
-<table border="0"">
-								<tr>             
-					<?php echo GetVoteForm1(); ?>
-					<?php echo GetVoteForm2(); ?>
-					<?php echo GetVoteForm3(); ?>
-					<?php echo GetVoteForm4(); ?>
-					<?php echo GetVoteForm5(); ?>
-					<?php echo GetVoteForm6(); ?>
-					<?php echo GetVoteForm7(); ?>
-                                                                                                                                                           
-								</tr>
-							</table>
+
+<select id="reward" name="reward" style="width:150px;" onchange="getPrice(this.value);">
+        <option>Your browser does not support this page.</option>
+      </select>
+			</tr>
+
+<tr class="ns-field-row ns-setting-row-even">
+				<td class="ns-label-cell">
+						<label>Amount of money needed :</label><br>
+						<span>In order to get the reward you have selected you must donate the above amount of money.</span>
 				</td>
-			</tr>        
+				<td class="ns-input-cell">
+
+<?php echo CURRENCY_CHAR; ?><span id="price"></span>
+			</tr>
 
 <tr class="ns-field-row ns-setting-row-odd">
 				<td class="ns-label-cell">
-						<label>Redeem your points:</label><br>
-						<span>Spend your reward points by chooding a prize you want
+						<label>Preview your reward :</label><br>
+						<span>Here you can see the item you will earn.</span>
 				</td>
 				<td class="ns-input-cell">
-								
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script type="text/javascript" src="http://www.aiondatabase.com/js/exsyndication.js"></script>
-	<form method="post" action="spendpoints/buy_item.php">
 
-  <table width="180" border="0">
-<td>
- <tr> 
-        <td width="10"><p align=""><em></em></p></td>
-      <td width="40"><p align="center"><em><?php GetCategoryTitleFromDatabase1(); // TITLE?></em></p></td>
-      <td width="60"><p align="center"><em></em></p></td>
-      <td width="70"><p align="center"><em></em></p></td>
-    </tr>
-    <tr>
-       <td width="10"><p align="left"><em></em></p></td>
-      <td width="40"><p align="left"><em>Item name</em></p></td>
-      <td width="60"><p align="center"><em>Amount</em></p></td>
-      <td width="70"><p align="center"><em>Cost</em></p></td>
-    </tr>
+  <div id="description" class="">
+         <?php echo $DESCRIPTIONS; ?> <a class="<?php echo $class;?>" target='_BLANK' href='http://www.aiondatabase.com/item/<?php echo $item_id; ?>'> <?php echo $Row['name']; ?> </a>
+      </div>
+      </td>
+			</tr>
 
- <?php echo GetRewardsFromDatabase1(); ?>
-
-
-</form>
-
-		   
-
-
-
-      
-       <tr> 
-        <td width="10"><p align=""><em></em></p></td>
-      <td width="40"><p align="center"><em></em></p></td>
-      <td width="60"><p align="center"><em></em></p></td>
-      <td width="70"><p align="center"><em></em></p></td>
-    </tr>
-          
-<tr valign="center">
-   <td width="10"><p align=""><em></em></p></td>
-								<td width="10">Server:</td>
-								<td><select name="realm" id="realm" size="1" style="width:100px;" onchange="getCharacters(); getRewards();"><option value="0">Your browser is outdated.</option></select></td>
-<td width="70"><p align="center"><em></em></p></td>
-  </p>
-    <p>
-							</tr>
-							<tr valign="center"><td width="10"><p align=""><em></em></p></td>
-								<td>Character:</td>
-								<td><select name="character" id="character" size="1" style="width:100px;"><option value="0">Your browser is outdated.</option></select></td><td width="70"><p align="center"><em></em></p></td>
-  </p>
-    <p>
-							</tr>
-							<tr valign="center"><td width="10"><p align=""><em></em></p></td>
-								<td>Reward:</td>
-								<td><select name="reward" size="1" id="reward" style="width:100px;" onchange="getInfo();"><option value="0">Your browser is outdated.</option></select></td><td width="70"><p align="center"><em></em></p></td>
-
-
- </p>
-  
-    <tr valign="center">
-
-<td width="10"><p><em></em></p></td>
-<td width="40"><p></p></td>
-<td width="60"><input id="purchase" type="button" value="Purchase" onclick="onPurchase();" /></td>
-
-<td width="70"><p align="center"><em></em></p></td>
-							
-</tr>
-
-</td>
-						
-
-
-						</table>
-
-
-
-
-			<script type="text/javascript">
-				var Realm = document.getElementById("realm");
-				var Character = document.getElementById("character");
-				var Reward = document.getElementById("reward");
-				var Description = document.getElementById("description");
-				var Cost = document.getElementById("cost");
-				var Points = document.getElementById("points");
-				var Purchase = document.getElementById("purchase");
-				
-				var Realms = <?php echo GetRealmData(); ?>;
-				var Characters = <?php echo GetCharData(); ?>;
-				var Rewards = <?php echo GetRewardData1(); ?>;
-				
-				var PointCount = <?php echo $_SESSION['points']; ?>;
-				
-				function getCharacters()
-				{
-					var i=0;
-					Character.options.length = 0;
-					for(var r in Characters)
-					{
-						if(Characters[r].realm == parseInt(Realm.value))
-						{
-							Character.options[i] = new Option(Characters[r].name,Characters[r].id);
-							i++;
-						}
-					}
-				}
-				
-				function getRewards()
-				{
-					var i=0;
-					Reward.options.length = 0;
-					for(var r in Rewards)
-					{
-						if(Rewards[r].realm == parseInt(Realm.value))
-						{
-							Reward.options[i] = new Option(Rewards[r].name+" x "+(Rewards[r].description/1000000)+"M",r); 
-							i++;
-						}
-					}
-					getInfo();
-				}
-				
-				function getInfo()
-				{
-
-					Description.innerHTML = Rewards[Reward.value].description
-                                                                                           
-
-					Cost.innerHTML = Rewards[Reward.value].cost;
-				}
-				
-                                                           
-
-				function onPurchase()
-				{
-					if(Character.options.length == 0)
-					{
-						alert("You don't have a character on that realm!");
-						return false;
-					}
-					if(Rewards[Reward.value].cost > PointCount)
-					{
-						alert("You don't have enough points!");
-						return false;
-					}
-					if(!confirm("Are you sure you wish to spend\r\n"+Rewards[Reward.value].cost+" reward points?"))
-						return false;
-					Purchase.disabled = true;
-					
-					var R;
-					var Sub = Rewards[Reward.value].cost;
-					if(window.XMLHttpRequest)
-					{
-						R = new XMLHttpRequest();
-					}
-					else if(window.ActiveX)
-					{
-						R = new ActiveXObject("Microsoft.XMLHTTP");
-					}
-					R.onreadystatechange = function()
-					{
-						if(R.readyState == 4)
-						{
-							Purchase.disabled = false;
-							if(R.responseText != "1")
-							{
-								alert("Transaction failed:\r\n"+R.responseText);
-							}
-							else
-							{
-								PointCount -= Sub;
-								Points.innerHTML = PointCount;
-								alert("Transaction Completed:\r\n"+Rewards[Reward.value].cost+" Points were deducted from your account!");
-								location.reload(true)
-							}
-						}
-					}
-					R.open("POST","?action=asdf",true);
-					var params = "realm="+Realm.value+"&reward="+Reward.value+"&character="+Character.value;
-					R.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-					R.setRequestHeader("Content-length",params.length);
-					R.setRequestHeader("Connection","close");
-					R.send(params);
-				} 
-
-		 function Initialize()
-				{
-					// Setup realm list, char list, etc.
-					var i = 0;
-					for(var r in Realms)
-					{
-						Realm.options[i] = new Option(Realms[r].name,r);
-						i++;
-					}
-					
-					i=0;
-					for(var r in Characters)
-					{
-						if(Characters[r].realm == parseInt(Realm.value))
-						{
-							Character.options[i] = new Option(Characters[r].name,Characters[r].id);
-							i++;
-						}
-					}
-					
-					i=0;
-					for(var r in Rewards)
-					{
-						if(Rewards[r].realm == parseInt(Realm.value))
-						{
-							Reward.options[i] = new Option(Rewards[r].name,r);
-							i++;
-						}
-					}
-					getCharacters();
-					getRewards();
-					getInfo();
-				}
-				Initialize();
-
-				
-			</script>
-
-
-
-
+<tr class="ns-field-row ns-setting-row-even">
+				<td class="ns-label-cell">
+						<label>Complete the donation :</label><br>
+						<span>Press add to cart button and you will be redirected to paypal, in order to finish your donation.</span>
 				</td>
-			</tr> 
+				<td class="ns-input-cell">
+<form onsubmit="return prepForm();" action="https://<?php echo PAYPAL_URL; ?>/cgi-bin/webscr" method="post" target="paypal">
+          <!--
+          Don't bother trying to change anything here,
+          you won't get your reward.
+          -->
+          <input type="hidden" name="add" value="1" />
+          <input type="hidden" name="cmd" value="_cart" />
+          <input type="hidden" name="notify_url" value="<?php echo SITE_URL.SYS_PATH?>class/donate.php" />
+ <input type="hidden" name="return" value="<?php echo SITE_URL.SYS_PATH?>class/donate.php" />
+          <input type="hidden" id="item_name" name="item_name" value="" />
+          <input type="hidden" id="amount" name="amount" value="" />
+          <input type="hidden" id="item_number" name="item_number" value="" />
+          <input type="hidden" name="quantity" value="1" />
+          <input type="hidden" name="business" value="<?php echo PAYPAL_EMAIL; ?>" />
+          <input type="hidden" name="currency_code" value="<?php echo CURRENCY_CODE; ?>" />
+          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+      	  <!--
+          Donation system by 1337D00D
+          -->
+      </form>
+</td>
+
+			</tr>
 
 
-                                        
-		</tbody>
 
-	</table>
+</body>
+  </table>
+
+<script type="text/javascript">
+
+	Description = new Spry.Widget.SlidingPanels("description",{transition:Spry.circleTransition});
+
+	var Realms = <?php echo $REALMS; ?>;
+	var Rewards = <?php echo $REWARDS; ?>;
 	
-	<div style="text-align: right; margin-top: 10px;">
-		<input class="ns-save-button" name="Submit" value="Save" type="submit">
-	</div>
-</body></html>	
-                    <?php
-	}
-
-                    
- 
-
-                     function __construct() //builds the pade by sending its content to the core html 
-
+	var Status = document.getElementById("status");
+	var Realm = document.getElementById("realm");
+	var Reward = document.getElementById("reward");
+	var Price = document.getElementById("price");
+	var Character = document.getElementById("character");
+	var CharId = "0";
+	
+	function setupRealmlist()
 	{
-                                
-		$this->Content();
+		var val;
+		Realm.options.length = 0;
+		for(val in Realms)
+		{
+			Realm.options[val] = new Option(Realms[val],val);
+		}
 	}
-}
+	
+	function getRewards(realm)
+	{
+		var val;
+		var i = 0;
+		Reward.options.length = 0;
+		for(val in Rewards)
+		{
+			if(Rewards[val].realm == realm)
+			{
+				Reward.options[i] = new Option(Rewards[val].name,val);
+				i++;
+			}
+		}
+		getPrice(Reward.value);
+		checkChar(Character.value);
+	}
+	
+	function getPrice(id)
+	{
+		Price.innerHTML = Rewards[id].price;
+		Description.showPanel(parseInt(id));
+	}
+	
+	function checkChar(name)
+	{
+		CharId = "0";
+		Status.src = "graphics/img/loading.gif";
+		Spry.Utils.loadURL("GET","uc_donate.php?char="+name+"&realm="+Realm.value,true,function(r)
+		{
+			var res = r.xhRequest.responseText;
+			if(res == "0")
+			{
+				document.getElementById("status").src = "graphics/img/notok.png";
+				CharId = "0";
+			}
+			else
+			{
+				CharId = res;
+				document.getElementById("status").src = "graphics/img/ok.png";
+			}
+		}
+		);
+	}
+	
+	function prepForm()
+	{
+		document.getElementById("item_name").value = Rewards[Reward.value].name;
+		document.getElementById("amount").value = Rewards[Reward.value].price;
+		document.getElementById("item_number").value = (parseInt(Realm.value)+1) +"-"+(parseInt(Reward.value)+1) +"-"+CharId;
+		if(CharId == "0")
+		{
+			return confirm("That character does not exist.\nIf you continue you might not receive your reward.");
+		}
+		if(isNaN(CharId))
+		{
+			alert("There is a problem with the donation system.\nIt may not have been properly configured.\nPlease contact the administrator.");
+			return false;
+		}
+		return true;
+	}
+	setupRealmlist();
+	getRewards(0);
+	
+</script>  
+
+</html>
+<?php
+		mysql_close($con);
+
+	}
+
+
 ?>
+
+
+
+

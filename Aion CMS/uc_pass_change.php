@@ -153,7 +153,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			</div>
 
 			<div id="ns-content">
-				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="80%">
+				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="85%">
 					<tbody><tr>
 						<td id="ns-left-col">
 
@@ -194,7 +194,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 	
 <div class="ns-group-link">
 	
-	<a href="?action=" onclick="">
+	<a href="?action=donate" onclick="">
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
 	</a>
 </div>		
@@ -211,7 +211,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 <div class="ns-group-link">
 	
-	<a href="?action=" onclick="">
+	<a href="?action=donate" onclick="">
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Donate
 	</a>
 </div>
@@ -219,8 +219,8 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 							
 					
-						<td id="ns-center-col">
-							
+						<td id="ns-left-col" >
+							<br><br>
 								<div class="ns-msg-none">
 									<img alt="information" src="graphics/img/icon_information.gif">
 									<p><br></p>

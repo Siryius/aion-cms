@@ -169,7 +169,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 <div class="ns-group-link">
 	
-	<a href="?action=" onclick="">
+	<a href="?action=donate" onclick="">
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Donate
 	</a>
 </div>

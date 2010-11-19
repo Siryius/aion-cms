@@ -42,7 +42,6 @@ case "vote_redeem":
 
 case "donate":
 	include("uc_donate.php");
-                   new donate();
 	break;
 
 case "pass_change":

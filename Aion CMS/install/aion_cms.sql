@@ -1,4 +1,64 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : Aion Engine
+Source Server Version : 50141
+Source Host           : localhost:3306
+Source Database       : aion_cms
+
+Target Server Type    : MYSQL
+Target Server Version : 50141
+File Encoding         : 65001
+
+Date: 2010-11-18 07:04:50
+*/
+
 SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `donate_log`
+-- ----------------------------
+DROP TABLE IF EXISTS `donate_log`;
+CREATE TABLE `donate_log` (
+  `entry` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(32) DEFAULT NULL,
+  `txn_id` varchar(32) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `status` varchar(16) DEFAULT NULL,
+  `amount` float unsigned DEFAULT NULL,
+  `info` blob,
+  PRIMARY KEY (`entry`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of donate_log
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `donate_rewards`
+-- ----------------------------
+DROP TABLE IF EXISTS `donate_rewards`;
+CREATE TABLE `donate_rewards` (
+  `entry` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `realm` int(10) unsigned DEFAULT NULL,
+  `description` text,
+  `item1` int(10) unsigned DEFAULT NULL,
+  `quantity1` tinyint(3) unsigned DEFAULT NULL,
+  `item2` int(10) unsigned DEFAULT NULL,
+  `quantity2` tinyint(3) unsigned DEFAULT NULL,
+  `item3` int(10) unsigned DEFAULT NULL,
+  `quantity3` tinyint(3) unsigned DEFAULT NULL,
+  `gold` int(10) unsigned DEFAULT NULL,
+  `price` float unsigned DEFAULT NULL,
+  PRIMARY KEY (`entry`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of donate_rewards
+-- ----------------------------
+INSERT INTO `donate_rewards` VALUES ('1', 'Kinah x 100.000', '1', 'Earn 100.000 kinah.', '123', '255', null, null, null, null, null, '10');
+INSERT INTO `donate_rewards` VALUES ('2', 'Tahabat\'s Sword', '1', 'Earn Tahabat\'s Sword.', '123123123', '1', null, null, null, null, null, '20');
+
 -- ----------------------------
 -- Table structure for `realms`
 -- ----------------------------
@@ -16,7 +76,7 @@ CREATE TABLE `realms` (
 -- ----------------------------
 -- Records of realms
 -- ----------------------------
-INSERT INTO `realms` VALUES ('1', 'Aion Server', '127.0.0.1', 'root', 'aion', 'players');
+INSERT INTO `realms` VALUES ('1', 'Aion Server', '127.0.0.1', 'root', 'aion', 'aengine_gs');
 
 -- ----------------------------
 -- Table structure for `vote_links`
