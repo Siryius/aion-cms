@@ -43,8 +43,8 @@ define(MAIL_BODY,"Thank you for supporting our server! Here is your reward!"); /
 
 = Go to installer =
 
-*After uploading the Aion CMS folder into your webserver , open it in browser , it will lead you to installer page.
+After uploading the Aion CMS folder into your webserver , open it in browser , it will lead you to installer page.
 
-*Fill all the needed gaps and press install.
+Fill all the needed gaps and press install.
 
-*Delete install folder and refresh page.
+Delete install folder and refresh page.
