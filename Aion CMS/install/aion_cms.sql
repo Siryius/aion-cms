@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50141
 File Encoding         : 65001
 
-Date: 2010-11-18 07:04:50
+Date: 2010-11-20 12:50:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,13 +42,9 @@ CREATE TABLE `donate_rewards` (
   `name` varchar(32) DEFAULT NULL,
   `realm` int(10) unsigned DEFAULT NULL,
   `description` text,
-  `item1` int(10) unsigned DEFAULT NULL,
-  `quantity1` tinyint(3) unsigned DEFAULT NULL,
-  `item2` int(10) unsigned DEFAULT NULL,
-  `quantity2` tinyint(3) unsigned DEFAULT NULL,
-  `item3` int(10) unsigned DEFAULT NULL,
-  `quantity3` tinyint(3) unsigned DEFAULT NULL,
-  `gold` int(10) unsigned DEFAULT NULL,
+  `item` int(10) unsigned DEFAULT NULL,
+  `quantity` tinyint(3) unsigned DEFAULT NULL,
+  `kinah` int(10) unsigned DEFAULT NULL,
   `price` float unsigned DEFAULT NULL,
   PRIMARY KEY (`entry`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
@@ -56,8 +52,6 @@ CREATE TABLE `donate_rewards` (
 -- ----------------------------
 -- Records of donate_rewards
 -- ----------------------------
-INSERT INTO `donate_rewards` VALUES ('1', 'Kinah x 100.000', '1', 'Earn 100.000 kinah.', '123', '255', null, null, null, null, null, '10');
-INSERT INTO `donate_rewards` VALUES ('2', 'Tahabat\'s Sword', '1', 'Earn Tahabat\'s Sword.', '123123123', '1', null, null, null, null, null, '20');
 
 -- ----------------------------
 -- Table structure for `realms`
@@ -165,8 +159,3 @@ CREATE TABLE `votes` (
 -- Records of votes
 -- ----------------------------
 INSERT INTO `votes` VALUES (null, null, null, null);
-INSERT INTO `votes` VALUES ('127.0.0.1', 'ntemos', '5', '1290013908');
-INSERT INTO `votes` VALUES ('127.0.0.1', 'ntemos', '2', '1290013758');
-INSERT INTO `votes` VALUES ('127.0.0.1', 'ntemos', '4', '1290013657');
-INSERT INTO `votes` VALUES ('127.0.0.1', 'ntemos', '6', '1290013926');
-INSERT INTO `votes` VALUES ('127.0.0.1', 'ntemos', '7', '1290014482');

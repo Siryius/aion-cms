@@ -39,16 +39,14 @@ define("RPPV8",2);
 define("RPPV9",1);
 
 // Donate System
-define(SITE_URL,"http://127.0.0.1:8096"); // COMPLETE url to your web site, NO TRAILING SLASH!
-define(SYS_PATH,"/"); // Path to the directory this file is in, beginning with a slash.
+define(SITE_URL,"http://w3ird.net"); // COMPLETE url to your web site, NO TRAILING SLASH!
+define(SYS_PATH,"/cms/"); // Path to the directory this file is in, beginning with a slash.
 define(CURRENCY_CODE,"USD"); // Currency code to be used by PayPal.
 define(CURRENCY_CHAR,"$"); // Symbol representing your currency code.
-define(PAYPAL_URL,"www.sandbox.paypal.com"); // Only change this for sandbox testing.
+define(PAYPAL_URL,"www.paypal.com"); // Only change this for sandbox testing.
 define(PAYPAL_EMAIL,"ntemos@live.com"); // The account that donations will go to.
-define(ACP_USERNAME,"admin"); // Username to access the log 
-define(ACP_PASSWORD,"admin"); // Password to access the log
 
-// Mail information.
+// Survey information.
 define(MAIL_SUBJECT,"Thank You"); // Subject of the reward mail.
 define(MAIL_BODY,"Thank you for supporting our server! Here is your reward!"); // Mail message.
 

@@ -1,36 +1,6 @@
 <?php
 set_time_limit(15);
-define("sql_host","localhost");
-define("sql_user","root");
-define("sql_pass","aion");
-define("Logindb","aengine_ls");
-define("Gamedb","aengine_gs");
-define("Cmsdb","aion_cms");
-$conn = @mysql_connect(sql_host, sql_user, sql_pass) or die(mysql_error());
 
-//Vote & Redeem System
-
-define("RPPV1",8); //vote points for vote-link 1 etc
-define("RPPV2",3);
-define("RPPV3",3);
-define("RPPV4",2);
-define("RPPV5",2);
-define("RPPV6",2);
-define("RPPV7",3);
-define("RPPV8",2);
-define("RPPV9",1);
-
-// Donate System
-define(SITE_URL,"http://127.0.0.1:8096"); // COMPLETE url to your web site, NO TRAILING SLASH!
-define(SYS_PATH,"/"); // Path to the directory this file is in, beginning with a slash.
-define(CURRENCY_CODE,"USD"); // Currency code to be used by PayPal.
-define(CURRENCY_CHAR,"$"); // Symbol representing your currency code.
-define(PAYPAL_URL,"www.paypal.com"); // Only change this for sandbox testing.
-define(PAYPAL_EMAIL,"ntemos@live.com"); // The account that donations will go to.
-
-// Mail information.
-define(MAIL_SUBJECT,"Thank You"); // Subject of the reward mail.
-define(MAIL_BODY,"Thank you for supporting our server! Here is your reward!"); // Mail message.
 
 function handlePayment()
 {
@@ -65,7 +35,7 @@ function handlePayment()
 	}
 	
 	//Get reward info
-	$res = mysql_query("SELECT entry,name,realm,price,item1,quantity1,item2,quantity2,item3,quantity3,gold FROM donate_rewards");
+	$res = mysql_query("SELECT entry,name,realm,item,quantity,kinah,price FROM donate_rewards");
 	$i = 1;
 	while($row = mysql_fetch_array($res))
 	{
@@ -119,23 +89,17 @@ function handlePayment()
 		$ccon = mysql_connect($Realms[(int)$value['realm']]['sqlhost'],$Realms[(int)$value['realm']]['sqluser'],$Realms[(int)$value['realm']]['sqlpass'],true);
 		mysql_select_db($Realms[(int)$value['realm']]['chardb'],$ccon);
 		$REWARDNAME = mysql_real_escape_string($Rewards[$value['id']]['name'],$ccon);
-		if((int)$Rewards[$value['id']]['item1'] > 0)
+		if((int)$Rewards[$value['id']]['quantity'] > 0)
 		{
                                     
-                                    mysql_query("INSERT INTO surveys VALUES(null,'{$value['character']}','".MAIL_SUBJECT."','".MAIL_BODY."','1','".$Rewards[(int)$value['id']]['item1']."','".$Rewards[(int)$value['id']]['quantity1']."')");
+                                    mysql_query("INSERT INTO surveys VALUES(null,'{$value['character']}','".MAIL_SUBJECT."','".MAIL_BODY."','1','".$Rewards[(int)$value['id']]['item']."','".$Rewards[(int)$value['id']]['quantity']."')");
 		
 		}
-		if((int)$Rewards[$value['id']]['item2'] > 0)
+		if((int)$Rewards[$value['id']]['kinah'] > 0)
 		{
-			mysql_query("INSERT INTO mailbox_insert_queue VALUES ('{$value['character']}','{$value['character']}','".MAIL_SUBJECT."','".MAIL_BODY."','61','0','".$Rewards[(int)$value['id']]['item2']."','1')");
-		}
-		if((int)$Rewards[$value['id']]['item3'] > 0)
-		{
-			mysql_query("INSERT INTO mailbox_insert_queue VALUES ('{$value['character']}','{$value['character']}','".MAIL_SUBJECT."','".MAIL_BODY."','61','0','".$Rewards[(int)$value['id']]['item3']."','1')");
-		}
-		if((int)$Rewards[$value['id']]['gold'] > 0)
-		{
-			mysql_query("INSERT INTO mailbox_insert_queue VALUES ('{$value['character']}','{$value['character']}','".MAIL_SUBJECT."','".MAIL_BODY."','61','".$Rewards[$value['id']]['gold']."','0','0')");
+		
+
+ mysql_query("INSERT INTO surveys VALUES(null,'{$value['character']}','".MAIL_SUBJECT."','".MAIL_BODY."','1','".$Rewards[(int)$value['id']]['item']."','".$Rewards[$value['id']]['kinah']."')");
 		}
 		mysql_close($ccon);
 	}
