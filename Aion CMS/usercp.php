@@ -77,7 +77,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 					<a href="?action=usercp">
                     <img src="graphics/img/admin_main_settings.gif" border="0">
                     
-                    <span>User</span>
+                    <span>Home</span>
                     </a>
 				</li>
 				
@@ -92,9 +92,9 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		?>			
 				</li>
 				<li class="">
-					<a href="?action=help">
+					<a href="chat.php">
                     <img src="graphics/img/admin_help.gif" border="0">                
-                    <span>Help &amp; Support</span>
+                    <span>Chat</span>
                     </a>
 				</li>
 			</ul>

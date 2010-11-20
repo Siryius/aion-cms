@@ -78,7 +78,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 					<a href="?action=usercp">
                     <img src="graphics/img/admin_main_settings.gif" border="0">
                     
-                    <span>User</span>
+                    <span>Home</span>
                     </a>
 				</li>
 				<li class="ns-on">
@@ -89,9 +89,9 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
                     </a>
 				</li>
 				<li class="">
-					<a href="?action=help">
+					<a href="chat.php">
                     <img src="graphics/img/admin_help.gif" border="0">                
-                    <span>Help &amp; Support</span>
+                    <span>Chat</span>
                     </a>
 				</li>
 			</ul>
@@ -107,57 +107,88 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			</div>
 
 			<div id="ns-content">
-				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="100%">
-					<tbody><tr>
+				<table id="ns-main-table" cellpadding="0" cellspacing="0" width="75%">
+					
+
 						<td id="ns-left-col">
+
+
 							<div class="ns-group-outer">
 								
 	<div class="ns-group-title" id="ns_group_title_Main">
-		<a href="?action=usercp" onclick="">
-			<img src="graphics/img/admin_setting_group.gif" border="0">Admin Control Panel
+		<a href="?action=admincp" onclick="">
+			<img src="graphics/img/admin_setting_group.gif" border="0">Account
 		</a>
 	</div>
 	
-	<div style="height: 100px; overflow: hidden;" class="ns-group-links">
+
+
 <div class="ns-group-link">
 	
 	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Create new account
+	</a>
+</div>
+
+
+
+<div class="ns-group-link">
+	
+	<a href="?action=pass_change" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Change user profiles
+	</a>
+</div>
+
+<div class="ns-group-link">
+	
+	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Transfer Character
+	</a>
+</div>
+
+<div class="ns-group-link">
+	
+	<a href="?action=" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Ban/Unban character
+	</a>
+</div>
+
+
+<div class="ns-group-title" id="ns_group_title_Main">
+		<a href="?action=admincp" onclick="">
+			<img src="graphics/img/admin_setting_group.gif" border="0">Server
+		</a>
+	</div>
+	
+	
+<div class="ns-group-link">
+	
+	<a href="?action=admincp" onclick="">
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Statistics
 	</a>
 </div>		
 
 
-<div class="ns-group-link">
-	
-	<a href="?action=" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Ban/Unban
-	</a>
-</div>
+
 
 <div class="ns-group-link">
 	
 	<a href="?action=vote_redeem" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Transfer character
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Vote & Redeem Settings 
 	</a>
 </div>
 
 <div class="ns-group-link">
 	
-	<a href="?action=" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">View logs
-	</a>
-</div>
-<div class="ns-group-link">
-	
-	<a href="?action=pass_change" onclick="">
-		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Edit Vote&Redeem settings
+	<a href="?action=donate" onclick="">
+		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Donate Log
 	</a>
 </div>
 
 
 							
 					
-						<td id="ns-center-col">
+						<td id="ns-left-col">
 							
 								<div class="ns-msg-none">
 									<img alt="information" src="graphics/img/icon_information.gif">
