@@ -6,13 +6,13 @@ Open config.php with your text editor and fill all the needed information:
 
 // sql credentials
 
-define("sql_host","localhost");
-define("sql_user","HERE WRITE THE USER OF MYSQL");
-define("sql_pass","HERE WRITE THE PASS OF MYSQL USER");
-define("Logindb","HERE WRITE THE DB OF LOGINSERVER");
-define("Gamedb","HERE WRITE THE DB OF GAMESERVER");
-define("Cmsdb","HERE WRITE THE DB OF AION_CMS");
-$conn = @mysql_connect(sql_host, sql_user, sql_pass) or die(mysql_error());
+||"define("sql_host","localhost");||
+||define("sql_user","HERE WRITE THE USER OF MYSQL");||
+||define("sql_pass","HERE WRITE THE PASS OF MYSQL USER");||
+||define("Logindb","HERE WRITE THE DB OF LOGINSERVER");||
+||define("Gamedb","HERE WRITE THE DB OF GAMESERVER");||
+||define("Cmsdb","HERE WRITE THE DB OF AION_CMS");||
+
 
 = 2-Go to installer =
 
