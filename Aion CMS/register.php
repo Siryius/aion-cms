@@ -19,32 +19,28 @@ class register // core class -needed by index.php
 if ($_POST['Submit']){
 
   require_once('class/recaptchalib.php');
-  $privatekey = "6Lc2s74SAAAAAJeg0lb6O_xiu5X7CE4JhZoOHb0w";
+  $privatekey = "6Ld04b4SAAAAAG3UU176OffDas8QNEIfiul2ZkSP ";
   $resp = recaptcha_check_answer ($privatekey,
   $_SERVER["REMOTE_ADDR"],
   $_POST["recaptcha_challenge_field"],
   $_POST["recaptcha_response_field"]);
 
-
-  if (!$resp->is_valid) 
+if ($resp->is_valid) 
 {
-  $msg = '<table id="ns_login_table" align="center">
+ $msg = '<table id="ns_login_table" align="center">
 					<tr>
 						
 						<td><font color=red>You have entered wrong Captcha Code!</font></td>
 						
 					</tr>
 
-				</table>';
+				</table>'; 
+
+
   } else {
-
-if ($_POST['Submit']){
-
 // Define post fields into simple variables
 $login = $_POST['name'];
 $password = $_POST['pass'];
-
-
 
 $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 	$db = @mysql_select_db(Logindb,$conn) or die($msg = "error");	
@@ -52,9 +48,13 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 	$query = "SELECT * FROM account_data WHERE (name = '$login')";
 	$r = @mysql_query($query) or die(xml_lang('errquery'));
 	
-	if (@mysql_num_rows($r) > 0) {
+	if (@mysql_num_rows($r) > 0)
+                 {
 		$msg = '<font color=red>Username already taken</font>';
-	} else {
+	} 
+
+                  else 
+                 {
 		$conn=@mysql_connect(sql_host,sql_user,sql_pass);
 	$db = @mysql_select_db(Logindb,$conn) or die($msg="error");
 
@@ -74,13 +74,16 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 					
 					
 				</table>';
-        
-	?></script><meta http-equiv="REFRESH" content="5;url=index.php"><?php
-	}
+       
+?></script><meta http-equiv="REFRESH" content="5;url=index.php"><?php     
+
+                           }
+ 
 
 }
-}  
+
 }
+
 
 ?>
 
@@ -190,7 +193,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
         <label>Password:</label>
           <span><br>It must be between 5 and 18 letters. </td>
           <td><span id="sprypassword1">
-          <input AUTOCOMPLETE="off" type="password" name="pass" id="pass" />
+          <input type="password" name="pass" id="pass" />
           <span class="passwordRequiredMsg"><br />
 A value is required.</span><span class="passwordMinCharsMsg">Minimum number of characters not met.</span><span class="passwordMaxCharsMsg">Exceeded maximum number of characters.</span></span></td>
         </tr>
@@ -201,7 +204,7 @@ A value is required.</span><span class="passwordMinCharsMsg">Minimum number of c
 	<label>Password Verification:</label>
 	<span><br>Enter your password again.</td>
           <td><span id="spryconfirm1">
-            <input AUTOCOMPLETE="off" type="password" name="password" id="password" />
+            <input type="password" name="password" id="password" />
             <span class="confirmRequiredMsg"><br />
             A value is required.</span><span class="confirmInvalidMsg">The values don't match.</span></span></td>
         </tr>
@@ -212,10 +215,10 @@ A value is required.</span><span class="passwordMinCharsMsg">Minimum number of c
 	<label>Captcha code:</label>
 	<span><br>Write here the letter you see in picture.</td>
           <td><script type="text/javascript"
-     src="http://www.google.com/recaptcha/api/challenge?k=6Lc2s74SAAAAAKWm22vGk_RGryNo-vvsZ2V_92On">
+     src="http://www.google.com/recaptcha/api/challenge?k=6Ld04b4SAAAAAFYHJsgtP3sQmFmZgayZQ7g1L0bU">
   </script>
   <noscript>
-     <iframe src="http://www.google.com/recaptcha/api/noscript?k=6Lc2s74SAAAAAKWm22vGk_RGryNo-vvsZ2V_92On"
+     <iframe src="http://www.google.com/recaptcha/api/noscript?k=6Ld04b4SAAAAAFYHJsgtP3sQmFmZgayZQ7g1L0bU"
          height="300" width="500" frameborder="0"></iframe><br>
      <textarea name="recaptcha_challenge_field" rows="3" cols="40">
      </textarea>

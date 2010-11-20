@@ -6,18 +6,25 @@ include("config.php");
 
 // force login to view.
 session_start();
-if(!$_SESSION['authenticated'] && $_GET['action'] != "register")
+if(!$_SESSION['authenticated'] && $_GET['action'] != "register" && $_GET['action'] != "donated")
 {
 	include("login.php");
                   new login();
 	die;
 }
-if(!$_SESSION['authenticated'] && $_GET['action'] != "")
+if(!$_SESSION['authenticated'] && $_GET['action'] != "donated" && $_GET['action'] != "login")
 {
 	include("register.php");
                   new register();
 	die;
 }
+
+if(!$_SESSION['authenticated'] && $_GET['action'] != "register" && $_GET['action'] != "login")
+{
+	include("class/donate.php");
+	die;
+}
+
 switch($_GET['action'])
 {
 default:
@@ -43,6 +50,7 @@ case "vote_redeem":
 case "donate":
 	include("uc_donate.php");
 	break;
+
 
 case "pass_change":
 	include("uc_pass_change.php");
