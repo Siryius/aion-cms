@@ -1,11 +1,29 @@
 #summary One-sentence summary of this page.
 
-= Introduction =
+= How to install =
 
-Add your content here.
+*1-Setting config.php*
 
+Open config.php with your text editor and fill all the needed information:
 
-= Details =
+// sql credentials
+
+"define("sql_host","localhost");
+define("sql_user","HERE WRITE THE USER OF MYSQL");
+define("sql_pass","HERE WRITE THE PASS OF MYSQL USER");
+define("Logindb","HERE WRITE THE DB OF LOGINSERVER");
+define("Gamedb","HERE WRITE THE DB OF GAMESERVER");
+define("Cmsdb","HERE WRITE THE DB OF AION_CMS");
+
+*2-Go to php installer*
+
+After uploading the Aion CMS folder into your webserver , open it in browser , it will lead you to installer page.
+
+Fill all the needed gaps and press install.
+
+Delete install folder and refresh page. 
+
+= How to setyp Donate system for your server =
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
