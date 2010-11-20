@@ -19,6 +19,7 @@ Fill the gaps like this:
 
 ||define(SITE_URL,"http://127.0.0.1:8096"); // COMPLETE url to your web site, NO TRAILING SLASH! ||
 ||define(SYS_PATH,"/HERE ADD THE PATH WHERE AION CMS IS"); / Path to the directory that aion cms is.||
+||for example if aion cms is in cms folder wirte above define(SYS_PATH,"/cms/"); . if there is no path and leave only a slash define(SYS_PATH,"/");||
 ||define(CURRENCY_CODE,"USD"); // Currency code to be used by PayPal.||
 ||define(CURRENCY_CHAR,"$"); // Symbol representing your currency code.||
 ||define(PAYPAL_URL,"www.paypal.com"); //||
