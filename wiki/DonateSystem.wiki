@@ -24,8 +24,7 @@ Fill the gaps like this:
 ||define(CURRENCY_CHAR,"$"); // Symbol representing your currency code.||
 ||define(PAYPAL_URL,"www.paypal.com"); //||
 ||define(PAYPAL_EMAIL,"ntemos@live.com"); // The account that donations will go to.||
-||define(ACP_USERNAME,"admin"); // Username to access the log ||
-||define(ACP_PASSWORD,"admin"); // Password to access the log||
+
 
 
 = Details =
