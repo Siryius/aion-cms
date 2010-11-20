@@ -2,7 +2,29 @@
 
 = 1-Edit class/donate.php =
 
-Add your content here.
+Go to Aion CMS folder in class folder and open donate.php.
+
+Fill the gaps like this:
+
+// sql credentials
+
+||"define("sql_host","localhost");||
+||define("sql_user","HERE WRITE THE USER OF MYSQL");||
+||define("sql_pass","HERE WRITE THE PASS OF MYSQL USER");||
+||define("Logindb","HERE WRITE THE DB OF LOGINSERVER");||
+||define("Gamedb","HERE WRITE THE DB OF GAMESERVER");||
+||define("Cmsdb","HERE WRITE THE DB OF AION_CMS");||
+
+// Donate System
+
+||define(SITE_URL,"http://127.0.0.1:8096"); // COMPLETE url to your web site, NO TRAILING SLASH!||
+||define(SYS_PATH,"/HERE ADD THE PATH WHERE AION CMS IS"); / Path to the directory that aion cms is.
+||define(CURRENCY_CODE,"USD"); // Currency code to be used by PayPal.||
+||define(CURRENCY_CHAR,"$"); // Symbol representing your currency code.||
+||define(PAYPAL_URL,"www.paypal.com"); //||
+||define(PAYPAL_EMAIL,"ntemos@live.com"); // The account that donations will go to.||
+||define(ACP_USERNAME,"admin"); // Username to access the log ||
+||define(ACP_PASSWORD,"admin"); // Password to access the log||
 
 
 = Details =
