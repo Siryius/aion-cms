@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary All the needed information to start using the Aion CMS in your server.
 
 = How to install =
 
@@ -23,9 +23,21 @@ Fill all the needed gaps and press install.
 
 Delete install folder and refresh page. 
 
-= How to setyp Donate system for your server =
+= How to setup Donate system for your server =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+*Edit config.php*
+
+Go to Aion CMS folder in class folder and open donate.php.
+
+Fill the gaps like this:
+
+
+// Donate System
+
+||define(SITE_URL,"http://127.0.0.1:8096"); // COMPLETE url to your web site, NO TRAILING SLASH! ||
+||define(SYS_PATH,"/HERE ADD THE PATH WHERE AION CMS IS"); / Path to the directory that aion cms is.||
+||for example if aion cms is in cms folder wirte above define(SYS_PATH,"/cms/"); . if there is no path and leave only a slash define(SYS_PATH,"/");||
+||define(CURRENCY_CODE,"USD"); // Currency code to be used by PayPal.||
+||define(CURRENCY_CHAR,"$"); // Symbol representing your currency code.||
+||define(PAYPAL_URL,"www.paypal.com"); //||
+||define(PAYPAL_EMAIL,"ntemos@live.com"); // The account that donations will go to.||
