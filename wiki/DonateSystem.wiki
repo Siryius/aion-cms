@@ -1,6 +1,6 @@
 #summary How to setup donate system for your server.
 
-= 1-Edit class/donate.php =
+= -Edit class/donate.php =
 
 Go to Aion CMS folder in class folder and open donate.php.
 
@@ -24,12 +24,3 @@ Fill the gaps like this:
 ||define(CURRENCY_CHAR,"$"); // Symbol representing your currency code.||
 ||define(PAYPAL_URL,"www.paypal.com"); //||
 ||define(PAYPAL_EMAIL,"ntemos@live.com"); // The account that donations will go to.||
-
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
