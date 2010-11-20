@@ -17,7 +17,7 @@ Fill the gaps like this:
 
 // Donate System
 
-||define(SITE_URL,"http://127.0.0.1:8096"); // COMPLETE url to your web site, NO TRAILING SLASH!||
+||define(SITE_URL,"http://127.0.0.1:8096"); // COMPLETE url to your web site, NO TRAILING SLASH! ||
 ||define(SYS_PATH,"/HERE ADD THE PATH WHERE AION CMS IS"); / Path to the directory that aion cms is.
 ||define(CURRENCY_CODE,"USD"); // Currency code to be used by PayPal.||
 ||define(CURRENCY_CHAR,"$"); // Symbol representing your currency code.||
