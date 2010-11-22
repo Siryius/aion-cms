@@ -32,7 +32,6 @@ class vote_redeem
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
 <title><?php $this->Title(); ?></title> 
-<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 
 <style type="text/css" media="all">@import url( "graphics/style.css" );</style>
 
@@ -83,7 +82,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 					<a href="?action=usercp">
                     <img src="graphics/img/admin_main_settings.gif" border="0">
                     
-                    <span>User</span>
+                    <span>Home</span>
                     </a>
 				</li>
 				
@@ -98,9 +97,9 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		?>			
 				</li>
 				<li class="">
-					<a href="?action=help">
+					<a href="chat.php">
                     <img src="graphics/img/admin_help.gif" border="0">                
-                    <span>Help &amp; Support</span>
+                    <span>Chat</span>
                     </a>
 				</li>
 			</ul>
@@ -112,7 +111,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			<input name="tab" value="main" type="hidden">
 		
 			<div id="ns-nav-bar">
-				Aion CMS - User Control Panel
+				Aion CMS - Vote & Redeem
 			</div>
 
 			<div id="ns-content">
@@ -133,7 +132,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 <div class="ns-group-link">
 	
-	<a href="?action=" onclick="">
+	<a href="?action=inventory" onclick="">
 		<img src="graphics/img/setting_item_bullet.png" alt="" border="0">Inventory editor
 	</a>
 </div>
@@ -190,7 +189,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 								</div>
 							
 								
-<div id="ns-settings-group-Main-summary" class="ns-settings-ctr" style="">
+<div id="ns-settings-group-Main-summary" class="ns-settings-ctr" style="" align="center">
 
 <a name="summary_debug_and_logs"></a>
                      <div class="ns-setting-group-info">

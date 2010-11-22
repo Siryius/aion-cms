@@ -1,5 +1,4 @@
 <?php
-
 // login.php (1)
 
 $local[100] = ".:: Aion CMS : логин ::.";

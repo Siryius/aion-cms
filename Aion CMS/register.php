@@ -83,19 +83,15 @@ $conn=@mysql_connect(sql_host,sql_user,sql_pass);
 }
 
 }
-
+require_once('./slang.php');
 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>.:: Aion CMS : Login ::.</title>
-
- 
+<title><?php require_once('./slang.php'); echo $local[200]; ?></title>
 <style type="text/css" media="all">@import url( "graphics/style.css" );</style>
-
 </head><body>
 
 <script src="graphics/js/SpryValidationTextField.js" type="text/javascript"></script>
@@ -143,13 +139,13 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		
 			<ul>
 				<li class="">
-					<a href="?action=login">Login</a>
+					<a href="?action=login"><?php require_once('./slang.php'); echo $local[201]; ?></a>
 				</li>
 			</ul>
 
                         <ul>
 				<li class="ns-on">
-					<a href="?action=register">Register</a>
+					<a href="?action=register"><?php require_once('./slang.php'); echo $local[202]; ?></a>
 				</li>
 			</ul>
  
@@ -158,7 +154,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		</div>
 		
 		<div id="ns-nav-bar">
-			Aion CMS - Register 
+			<?php require_once('./slang.php'); echo $local[203]; ?>
 		</div>
 		
 		<div id="ns-content">
@@ -177,43 +173,43 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
   
         <tr class="ns-field-row ns-setting-row-odd">
          <td class="ns-label-cell">
-						<label>Username:</label>
-						<span><br>It must be between 5 and 18 letters. 
+						<label><?php require_once('./slang.php'); echo $local[204]; ?></label>
+						<span><br><?php require_once('./slang.php'); echo $local[205]; ?> 
 				</td>
      
 <td><span id="sprytextfield1">   
             <input type="text" name="name" id="name" />
             <span class="textfieldRequiredMsg"><br />
-            A value is required.</span></td>
+           <?php require_once('./slang.php'); echo $local[213]; ?></span></td>
           </tr>
 
       
            <tr class="ns-field-row ns-setting-row-even">
          <td class="ns-label-cell" align="center">
-        <label>Password:</label>
-          <span><br>It must be between 5 and 18 letters. </td>
+        <label><?php require_once('./slang.php'); echo $local[206]; ?></label>
+          <span><br><?php require_once('./slang.php'); echo $local[207]; ?></td>
           <td><span id="sprypassword1">
           <input type="password" name="pass" id="pass" />
           <span class="passwordRequiredMsg"><br />
-A value is required.</span><span class="passwordMinCharsMsg">Minimum number of characters not met.</span><span class="passwordMaxCharsMsg">Exceeded maximum number of characters.</span></span></td>
+<?php require_once('./slang.php'); echo $local[213]; ?></span><span class="passwordMinCharsMsg"><?php require_once('./slang.php'); echo $local[214]; ?></span><span class="passwordMaxCharsMsg"><?php require_once('./slang.php'); echo $local[215]; ?></span></span></td>
         </tr>
 
 
         <tr class="ns-field-row ns-setting-row-odd">
           <td class="ns-label-cell">
-	<label>Password Verification:</label>
-	<span><br>Enter your password again.</td>
+	<label><?php require_once('./slang.php'); echo $local[208]; ?></label>
+	<span><br><?php echo $local[209]; ?></td>
           <td><span id="spryconfirm1">
             <input type="password" name="password" id="password" />
             <span class="confirmRequiredMsg"><br />
-            A value is required.</span><span class="confirmInvalidMsg">The values don't match.</span></span></td>
+            <?php require_once('./slang.php'); echo $local[213]; ?></span><span class="confirmInvalidMsg"><?php require_once('./slang.php'); echo $local[216]; ?></span></span></td>
         </tr>
 
 
           <tr class="ns-field-row ns-setting-row-even">
            <td class="ns-label-cell">
-	<label>Captcha code:</label>
-	<span><br>Write here the letter you see in picture.</td>
+	<label><?php require_once('./slang.php'); echo $local[210]; ?></label>
+	<span><br><?php require_once('./slang.php'); echo $local[211]; ?></td>
           <td><script type="text/javascript"
      src="http://www.google.com/recaptcha/api/challenge?k=6Ld04b4SAAAAAFYHJsgtP3sQmFmZgayZQ7g1L0bU">
   </script>
@@ -229,7 +225,7 @@ A value is required.</span><span class="passwordMinCharsMsg">Minimum number of c
 
 
     <tr><td></td>
-      <th scope="row" align="left"><input class="text" type="submit" name="Submit" value="Register" /></th>
+      <th scope="row" align="left"><input class="text" type="submit" name="Submit" value="<?php require_once('./slang.php'); echo $local[212]; ?>" /></th>
     </tr>
 
 

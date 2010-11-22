@@ -1,47 +1,5 @@
 <?php 
 
-//language select
-preg_match('/en/i',$_GET['lang']);
-preg_match('/ru/i',$_GET['lang']);
-if(isset($_GET['lang']))
-{
-$lang = $_GET['lang'];
-
-// register the session and set the cookie
-$_SESSION['lang'] = $lang;
-
-}
-else if(isset($_SESSION['lang']))
-{
-$lang = $_SESSION['lang'];
-}
-else if(isset($_COOKIE['lang']))
-{
-$lang = $_COOKIE['lang'];
-}
-else
-{
-$lang = 'en';
-}
-
-switch ($lang) {
-  case 'en':
-  include_once '../lang/eng.php';
-  break;
-
-  case 'ru':
-  include_once '../lang/ru.php';
-  break;
-
-  case 'es':
-  include_once '../lang/es.php';
-  break;
-
-  default:
-  include_once '../lang/eng.php';
-
-}
-
 $sqlErrorText = '';
 $sqlErrorCode = 0;
 $sqlStmt      = '';
@@ -138,7 +96,7 @@ $sqlFileToExecute1 = 'aion_cms.sql';
         }
 }
 ?>
-<title><?php echo $local[300]; ?></title>
+<title><?php require_once('../slang.php'); echo $local[300]; ?></title>
 <style type="text/css" media="all">@import url( "../graphics/style.css" );</style>
 
 </head><body>
@@ -183,7 +141,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			
 <ul>
 				<li class="ns-on">
-					<a href="install.php"><?php echo $local[301]; ?></a>
+					<a href="install.php"><?php require_once('../slang.php'); echo $local[301]; ?></a>
 				</li>
 			</ul>
                         
@@ -193,14 +151,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		</div>
 		
 		<div id="ns-nav-bar">
-			<?php echo $local[302]; ?>
-<div id="ns_top_right_links">
-
-<a href="?lang=en" target=""><img src="../graphics/img/en.jpg"  alt="Click here to change the language to English" /></a>
-<a href="?lang=ru" target=""><img src="../graphics/img/ru.gif"  alt="Click here to change the language to Russian" /></a>
-
-                                                                      
-			</div>
+			<?php require_once('../slang.php'); echo $local[302]; ?>
 		</div>
 		
 		<div id="ns-content">
@@ -210,8 +161,8 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
                       <td id="ns-left-col">                
                      <div id="ns-settings-group-Main-summary" class="ns-settings-ctr" style="">                             
 <div class="ns-setting-group-info">
-		<img alt="information" src="../graphics/img/icon_information.gif"><h2><?php echo $local[303]; ?></h2>
-		<p><br><?php echo $local[304]; ?></p>
+		<img alt="information" src="../graphics/img/icon_information.gif"><h2><?php require_once('../slang.php'); echo $local[303]; ?></h2>
+		<p><br><?php require_once('../slang.php'); echo $local[304]; ?></p>
                                      <?php echo $msg;?>
 	</div>
 <br>
@@ -222,8 +173,8 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 			<tr class="ns-field-row ns-setting-row-odd">
 				<td class="ns-label-cell">
-						<label><?php echo $local[305]; ?></label><br>
-						<span><?php echo $local[306]; ?></span>
+						<label><?php require_once('../slang.php'); echo $local[305]; ?></label><br>
+						<span><?php require_once('../slang.php'); echo $local[306]; ?></span>
 				</td>
 <td class="ns-input-cell">
 
@@ -233,8 +184,8 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
           <tr class="ns-field-row ns-setting-row-even">
 				<td class="ns-label-cell">
-						<label><?php echo $local[307]; ?></label><br>
-						<span><?php echo $local[308]; ?>
+						<label><?php require_once('../slang.php'); echo $local[307]; ?></label><br>
+						<span><?php require_once('../slang.php'); echo $local[308]; ?>
 				</td>
 				<td class="ns-input-cell">
 						<input class="text" name="username" type="text" size="45" value="root" />
@@ -244,8 +195,8 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
    
          <tr class="ns-field-row ns-setting-row-odd">
 				<td class="ns-label-cell">
-						<label><?php echo $local[309]; ?></label><br>
-						<span><?php echo $local[310]; ?>
+						<label><?php require_once('../slang.php'); echo $local[309]; ?></label><br>
+						<span><?php require_once('../slang.php'); echo $local[310]; ?>
 				</td>
 				<td class="ns-input-cell">
 						<input class="text" name="password" type="password" size="45" value="" />
@@ -255,8 +206,8 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
           <tr class="ns-field-row ns-setting-row-even">
 				<td class="ns-label-cell">
-						<label><?php echo $local[311]; ?></label><br>
-						<span><?php echo $local[312]; ?>
+						<label><?php require_once('../slang.php'); echo $local[311]; ?></label><br>
+						<span><?php require_once('../slang.php'); echo $local[312]; ?>
 				</td>
 				<td class="ns-input-cell">
 						<input class="text" name="acdb" type="text" size="45" value="aion_cms" />
@@ -265,8 +216,8 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 
 <tr class="ns-field-row ns-setting-row-odd">
 				<td class="ns-label-cell">
-						<label><?php echo $local[313]; ?></label><br>
-						<span><?php echo $local[314]; ?>
+						<label><?php require_once('../slang.php'); echo $local[313]; ?></label><br>
+						<span><?php require_once('../slang.php'); echo $local[314]; ?>
 				</td>
 				<td class="ns-input-cell">
 						<input class="text" name="lsdb" type="text" size="45" value="" />
@@ -274,7 +225,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			</tr> 
 
 
-          <tr><td align="center" colspan="2"><br/><input class="text" type="submit" name="submitBtn" value="<?php echo $local[315]; ?>" /></td></tr>
+          <tr><td align="center" colspan="2"><br/><input class="text" type="submit" name="submitBtn" value="<?php require_once('../slang.php'); echo $local[315]; ?>" /></td></tr>
         </table>  
       </form>
 

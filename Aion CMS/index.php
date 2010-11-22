@@ -1,11 +1,10 @@
 <?php
-
+session_start();
 // includes
-
 include("config.php");
 
 // force login to view.
-session_start();
+
 if(!$_SESSION['authenticated'] && $_GET['action'] != "register" && $_GET['action'] != "donated")
 {
 	include("login.php");
@@ -30,6 +29,10 @@ switch($_GET['action'])
 default:
 	include("usercp.php");
                   new usercp();
+	break;
+
+case "chat":
+	include("chat/index.php");
 	break;
 
 case "statistics":
@@ -91,6 +94,5 @@ case "logout":
 	include("logout.php");
 	break;
 }
-
 
 ?>

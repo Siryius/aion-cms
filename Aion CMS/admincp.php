@@ -81,12 +81,16 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
                     <span>Home</span>
                     </a>
 				</li>
-				<li class="ns-on">
-                    
-					<a href="?action=admincp">
+				
+               <?php     if($_SESSION["access_level"] > 2)
+{
+	echo ('<li class="ns-on"><a href="?action=admincp">
                     <img src="graphics/img/admin_modules.gif" border="0">
                     <span>Admin</span>
-                    </a>
+                    </a>');
+	
+}
+		?>			
 				</li>
 				<li class="">
 					<a href="chat.php">

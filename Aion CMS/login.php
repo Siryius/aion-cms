@@ -4,7 +4,6 @@
 require_once("class/login.php");
 require_once("config.php");
 
-
 class login // core class -needed by index.php
 
 {
@@ -58,7 +57,7 @@ class login // core class -needed by index.php
                                                         ?></script><meta http-equiv="REFRESH" content="3;url=index.php"><?php
 			
 
-		}else{
+		}else{         require_once('./slang.php');
                                                        $msg = '<table id="ns_login_table" align="center">
 					<tr>
 						
@@ -81,10 +80,8 @@ class login // core class -needed by index.php
 <script src="graphics/js/SpryTooltip.js" type="text/javascript"></script>
 <link href="graphics/js/SpryTooltip.css" rel="stylesheet" type="text/css">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>.:: Aion CMS : Login ::.</title>
+<title><?php require_once('./slang.php'); echo $local[100]; ?></title>
 
- 
 <style type="text/css" media="all">@import url( "graphics/style.css" );</style>
 
 </head><body>
@@ -118,21 +115,24 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 <br>
 <br>Project creator and leader <a class="preorder">ntemos</a>
 </div>
-
 <div id="ns-global-wrapper">
 
+
+
+
+		
 <div id="ns-top-bar">
 			
 		
 			<ul>
 				<li class="ns-on">
-					<a href="?action=login">Login</a>
+					<a href="?action=login"><?php require_once('./slang.php'); echo $local[101]; ?></a>
 				</li>
 			</ul>
 
                         <ul>
 				<li class="">
-					<a href="?action=register">Register</a>
+					<a href="?action=register"><?php require_once('./slang.php'); echo $local[102]; ?></a>
 				</li>
 			</ul>
  
@@ -141,34 +141,46 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
   </div>
 		
 		<div id="ns-nav-bar">
-			Aion CMS - Login
+			<?php require_once('./slang.php'); echo $local[103]; ?>
+
+<div id="ns_top_right_links">
+
+<a href="index.php?lang=en" target=""><img src="graphics/img/en.jpg"  alt="Click here to change the language to English" /></a>
+<a href="index.php?lang=ru" target=""><img src="graphics/img/ru.gif"  alt="Click here to change the language to Russian" /></a>
+
+                                                                      
+			</div>
 		</div>
 		
 		<div id="ns-content">
-		
+
+
+
 			
+
+
 			<form id="ns_login_form" action="" method="post"">
 				<input name="action" value="login" type="hidden">
 <?php echo $msg;?>
 		                                    <table id="ns_login_table" align="center">
 					<tbody><tr>
-						<th><label for="ns_username"><?php include("lang/eng.php"); echo $local[101]; ?> :</label></th>
+						<th><label for="ns_username"><?php require_once('./slang.php'); echo $local[104]; ?> :</label></th>
 						<td><input name="name" id="name" value="" size="17" type="text"></td>
 						
 					</tr>
 					<tr>
-						<th><label for="ns_password"><?php include("lang/eng.php"); echo $local[102]; ?> :</label></th>
+						<th><label for="ns_password"><?php  echo $local[105]; ?> :</label></th>
 						<td><input AUTOCOMPLETE="off" name="password" id="password" value="" size="17" type="password"></td>
 					</tr>
 					<tr>
 						<th>&nbsp;</th>
 						<td>
-							<input name=".save" value="Sign In" type="submit">	
+							<input name=".save" value="<?php require_once('./slang.php'); echo $local[106]; ?>" type="submit">	
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<span class="ns-small-text">Please enter your in-game account's credentials.</span><br>
+							<span class="ns-small-text"><?php  echo $local[107]; ?></span><br>
                                                                                                                              
 						</td>
 					</tr>
@@ -180,7 +192,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 			</form>
 		</div>
 </div>
-<div class="tooltipContent" id="sprytooltip1">Please enter the username which you use to login in server!</div>
+<div class="tooltipContent" id="sprytooltip1"><?php  echo $local[108]; ?></div>
 <script type="text/javascript">
 var sprytooltip1 = new Spry.Widget.Tooltip("sprytooltip1", "#name");
 </script>

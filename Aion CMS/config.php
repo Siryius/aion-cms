@@ -1,20 +1,6 @@
 <?php
 
-//multilang support
-//language select
-$lang = "en";
 
-
-//configure
-if ($lang == 'en'){
-						require_once ("./lang/eng.php");
-}elseif ($lang == 'ru'){
-						require_once ("./lang/ru.php");
-}elseif ($lang == 'am'){
-						require_once ("./lang/am.php");
-}else {
-						echo "No language selected";
-						};
 
 // sql credentials
 

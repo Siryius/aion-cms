@@ -27,8 +27,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
 <title></title> 
-<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-
 <style type="text/css" media="all">@import url( "graphics/style.css" );</style>
 
 </head><body>
@@ -69,7 +67,7 @@ Welcome to <a class="preorder" href="">Aion CMS</a>. Feel free to browse and exp
 		<div id="ns-top-bar">
 			<div id="ns_top_right_links">
 				
-				<a href="?action=logout">Log out (<?php echo $_SESSION['name'];?>)</a>
+				<a href="./?action=logout">Log out (<?php echo $_SESSION['name'];?>)</a>
 			</div>
 		
 			<ul>
